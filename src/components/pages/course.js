@@ -1,24 +1,32 @@
 import React from 'react';
-import {Button, Text, Footer, FooterTab} from 'native-base';
+import {Content, Card, CardItem, Body} from 'native-base';
+import {MainHeader} from '../../../menu';
+import {CourseTab, MenuTab, SimpleBlock} from '../organisms';
+import * as cnt from '../../utilities/constants';
+import {DarkText as Text} from '../atoms';
 
 const Course = props => {
   return (
-    <>
-      <Text>course</Text>
-      <Footer>
-        <FooterTab style={{backgroundColor: '#8fbd40'}}>
-          <Button>
-            <Text style={{color: '#fff'}}>Apps</Text>
-          </Button>
-          <Button>
-            <Text style={{color: '#fff'}}>Navigate</Text>
-          </Button>
-          <Button>
-            <Text style={{color: '#fff'}}>Contact</Text>
-          </Button>
-        </FooterTab>
-      </Footer>
-    </>
+    <MainHeader>
+      <CourseTab />
+      <Content padder>
+        <Card>
+          <CardItem>
+            <Body>
+              <Text>dòng giới thiệu 1</Text>
+              <Text>dòng giới thiệu 2</Text>
+              <Text>dòng giới thiệu 3</Text>
+            </Body>
+          </CardItem>
+        </Card>
+        <SimpleBlock type={cnt.CHUDEKHOAHOC} />
+        <SimpleBlock type={cnt.KYNANGMEMHOT} />
+        <SimpleBlock type={cnt.KHQUANLY} />
+        <SimpleBlock type={cnt.DNTHIEUBAN} />
+        <SimpleBlock type={cnt.HOCDELUONGCAO} />
+      </Content>
+      <MenuTab />
+    </MainHeader>
   );
 };
 

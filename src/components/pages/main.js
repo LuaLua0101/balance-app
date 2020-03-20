@@ -1,8 +1,21 @@
 import React from 'react';
-import {Text} from 'native-base';
+import {MainHeader} from '../../../menu';
+import {Content} from 'native-base';
+import {MenuTab, SimpleBlock} from '../organisms';
+import * as cnt from '../../utilities/constants';
 
 const Main = props => {
-  return <Text>1234</Text>;
+  return (
+    <MainHeader>
+      <MenuTab />
+      <Content padder>
+        <SimpleBlock type={cnt.KHOAHOCTUYETVOI} />
+        <SimpleBlock type={cnt.VIECGANBAN} />
+        <SimpleBlock type={cnt.DNCANBAN} />
+        <SimpleBlock type={cnt.BANLAAI} />
+      </Content>
+    </MainHeader>
+  );
 };
 
 export default Main;

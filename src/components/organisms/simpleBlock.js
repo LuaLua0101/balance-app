@@ -1,0 +1,48 @@
+import React, {useState, useEffect} from 'react';
+import {Card, CardItem, Body} from 'native-base';
+import {ScrollView} from 'react-native';
+import {Col, Grid} from 'react-native-easy-grid';
+import {Card as Card2, DarkText, GreenText} from '../atoms';
+import * as cnt from '../../utilities/constants';
+
+const SimpleBlock = props => {
+  const [data, setData] = useState({
+    title: 'Khóa học tuyệt vời',
+    data: [
+      {
+        id: 1,
+        uri: 'http://bit.ly/2GfzooV',
+        text: 'hinh 1',
+      },
+    ],
+  });
+
+  useEffect(() => {}, []);
+
+  return (
+    <Card transparent>
+      <CardItem header bordered>
+        <Grid>
+          <Col size={75}>
+            <GreenText title>{data && data.title}</GreenText>
+          </Col>
+          <Col size={25}>
+            <DarkText>Xem thêm</DarkText>
+          </Col>
+        </Grid>
+      </CardItem>
+      <CardItem bordered>
+        <Body>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {data.data &&
+              data.data.map((item, index) => {
+                return <Card2 key={index} uri={item.uri} text={item.text} />;
+              })}
+          </ScrollView>
+        </Body>
+      </CardItem>
+    </Card>
+  );
+};
+
+export default SimpleBlock;
