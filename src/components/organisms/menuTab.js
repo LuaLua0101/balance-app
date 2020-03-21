@@ -19,10 +19,10 @@ const MenuTab = props => {
       <Button last onPress={() => navigation.navigate('Course')}>
         <Text>Khóa học</Text>
       </Button>
-      <Button last onPress={() => navigation.navigate('Main')}>
+      <Button last onPress={() => navigation.navigate('Job')}>
         <Text>Việc làm</Text>
       </Button>
-      <Button last onPress={() => navigation.navigate('Main')}>
+      <Button last onPress={() => navigation.navigate('TestEbook')}>
         <Text>Test & ebook</Text>
       </Button>
     </CustomSegment>

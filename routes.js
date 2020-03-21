@@ -1,7 +1,15 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Main, Login, Course} from './src/components/pages';
+import {
+  Main,
+  Login,
+  Course,
+  Job,
+  TestEbook,
+  Notify,
+  UserInfo,
+} from './src/components/pages';
 
 const Stack = createStackNavigator();
 
@@ -15,6 +23,10 @@ const Routes = () => {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Main" component={Main} />
         <Stack.Screen name="Course" component={Course} />
+        <Stack.Screen name="Job" component={Job} />
+        <Stack.Screen name="TestEbook" component={TestEbook} />
+        <Stack.Screen name="Notify" component={Notify} />
+        <Stack.Screen name="UserInfo" component={UserInfo} />
       </Stack.Navigator>
     </NavigationContainer>
   );

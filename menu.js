@@ -33,19 +33,31 @@ export const Menu = props => {
           link
           onPress={() => navigation.navigate('Course')}
         />
-        <Link
-          text="Việc làm"
-          link
-          onPress={() => navigation.navigate('Course')}
-        />
+        <Link text="Việc làm" link onPress={() => navigation.navigate('Job')} />
         <Link
           text="Test & Ebook"
           link
-          onPress={() => navigation.navigate('Course')}
+          onPress={() => navigation.navigate('TestEbook')}
         />
         <Link text="Đăng xuất" link />
       </View>
     </View>
+  );
+};
+
+export const RightMenu = props => {
+  const navigation = useNavigation();
+
+  return (
+    <Right>
+      <Button transparent onPress={() => navigation.navigate('Notify')}>
+        <Icon name="md-notifications" style={{fontSize: 26}} />
+        <Badge style={{width: 12, height: 12}}></Badge>
+      </Button>
+      <Button transparent onPress={() => navigation.navigate('UserInfo')}>
+        <Icon name="ios-contact" style={{fontSize: 36}} />
+      </Button>
+    </Right>
   );
 };
 
@@ -76,15 +88,7 @@ export class MainHeader extends Component {
             <Body>
               <Title>Balance App</Title>
             </Body>
-            <Right>
-              <Button transparent>
-                <Icon name="md-notifications" style={{fontSize: 26}} />
-                <Badge style={{width: 12, height: 12}}></Badge>
-              </Button>
-              <Button transparent>
-                <Icon name="ios-contact" style={{fontSize: 36}} />
-              </Button>
-            </Right>
+            <RightMenu />
           </Header>
           {this.props.children}
         </Drawer>
