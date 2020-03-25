@@ -1,13 +1,14 @@
 import React from 'react';
-import {MainHeader} from '../../../menu';
+import MainHeader from '../../../menu';
 import {Content} from 'native-base';
-import {MenuTab, SimpleBlock} from '../organisms';
+import {MenuTab, SimpleBlock, SearchBar} from '../organisms';
 import * as cnt from '../../utilities/constants';
 
 const TestEbook = props => {
   return (
     <MainHeader>
       <MenuTab test />
+      <SearchBar />
       <Content padder>
         <SimpleBlock type={cnt.KHOAHOCTUYETVOI} />
         <SimpleBlock type={cnt.VIECGANBAN} />

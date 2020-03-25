@@ -4,12 +4,14 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {
   Main,
   Login,
+  Register,
   Course,
   Job,
   TestEbook,
   Notify,
   UserInfo,
   MyCV,
+  Result,
 } from './src/components/pages';
 
 const Stack = createStackNavigator();
@@ -22,6 +24,7 @@ const Routes = () => {
           headerShown: false,
         }}>
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Main" component={Main} />
         <Stack.Screen name="Course" component={Course} />
         <Stack.Screen name="Job" component={Job} />
@@ -29,6 +32,7 @@ const Routes = () => {
         <Stack.Screen name="Notify" component={Notify} />
         <Stack.Screen name="UserInfo" component={UserInfo} />
         <Stack.Screen name="MyCV" component={MyCV} />
+        <Stack.Screen name="Result" component={Result} />
       </Stack.Navigator>
     </NavigationContainer>
   );

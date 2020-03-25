@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Card, CardItem, Body} from 'native-base';
 import {ScrollView} from 'react-native';
 import {Col, Grid} from 'react-native-easy-grid';
-import {Card as Card2, DarkText, GreenText} from '../atoms';
+import {Card as Card2, DarkText, GreenText, ButtonShowMore} from '../atoms';
 import * as cnt from '../../utilities/constants';
 
 const SimpleBlock = props => {
@@ -14,20 +14,43 @@ const SimpleBlock = props => {
         uri: 'http://bit.ly/2GfzooV',
         text: 'hinh 1',
       },
+      ,
+      {
+        id: 1,
+        uri: 'http://bit.ly/2GfzooV',
+        text: 'hinh 1',
+      },
+      ,
+      {
+        id: 1,
+        uri: 'http://bit.ly/2GfzooV',
+        text: 'hinh 1',
+      },
     ],
   });
 
   useEffect(() => {}, []);
 
   return (
-    <Card transparent>
+    <Card
+      transparent
+      style={{
+        shadowColor: '#808080',
+        shadowOffset: {
+          width: 0,
+          height: 9,
+        },
+        shadowOpacity: 0.5,
+        shadowRadius: 12.35,
+        elevation: 10,
+      }}>
       <CardItem header bordered>
         <Grid>
           <Col size={75}>
             <GreenText title>{data && data.title}</GreenText>
           </Col>
           <Col size={25}>
-            <DarkText>Xem thêm</DarkText>
+            <ButtonShowMore text="Xem thêm" />
           </Col>
         </Grid>
       </CardItem>

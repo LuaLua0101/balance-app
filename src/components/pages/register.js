@@ -1,9 +1,9 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Logo} from '../atoms';
-import {SignInForm} from '../templates';
+import {SignUpForm} from '../templates';
 
-const Login = props => {
+const Register = props => {
   return (
     <>
       <Logo
@@ -17,10 +17,10 @@ const Login = props => {
           alignItems: 'center',
           backgroundColor: '#FFFFFF',
         }}>
-        <SignInForm />
+        <SignUpForm />
       </View>
     </>
   );
 };
 
-export default Login;
+export default Register;

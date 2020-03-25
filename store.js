@@ -1,0 +1,24 @@
+import {applyMiddleware} from 'redux';
+import {createStore} from 'react-hooks-global-state';
+import reducer from './src/reducers';
+
+const initialState = {
+  headers: {title: 'Balance App 1'},
+};
+
+var logger = function(_a) {
+  return function(next) {
+    return function(action) {
+      // console.log("will dispatch", action);
+      var returnValue = next(action);
+      // console.log("state after dispatch", getState());
+      return returnValue;
+    };
+  };
+};
+
+export const {GlobalStateProvider, dispatch, useGlobalState} = createStore(
+  reducer,
+  initialState,
+  applyMiddleware(logger),
+);

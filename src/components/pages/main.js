@@ -1,5 +1,5 @@
 import React from 'react';
-import {MainHeader} from '../../../menu';
+import MainHeader from '../../../menu';
 import {Content} from 'native-base';
 import {MenuTab, SimpleBlock} from '../organisms';
 import * as cnt from '../../utilities/constants';

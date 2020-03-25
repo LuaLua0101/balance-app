@@ -6,4 +6,15 @@ const DarkText = styled(Text)`
   color: ${props => props.theme.darkColor};
 `;
 
-export default props => <DarkText>{props.children}</DarkText>;
+export default props => (
+  <DarkText
+    style={
+      props.title && {
+        fontSize: 18,
+        fontWeight: 'bold',
+        textDecorationLine: 'underline',
+      }
+    }>
+    {props.children}
+  </DarkText>
+);

@@ -5,12 +5,21 @@ import {TouchableOpacity} from 'react-native';
 
 const CustomCard = styled(Card)`
   width: 200;
+  shadow-color: #808080;
+  shadow-opacity: 0.5;
+  elevation: 10;
+`;
+
+const CustomCardImage = styled(CardImage)`
+  shadow-color: #808080;
+  shadow-opacity: 0.5;
+  elevation: 10;
 `;
 
 export default props => (
   <TouchableOpacity onPress={props.routing}>
     <CustomCard>
-      <CardImage source={{uri: props.uri}} />
+      <CustomCardImage source={{uri: props.uri}} />
       <CardContent text={props.text} />
     </CustomCard>
   </TouchableOpacity>

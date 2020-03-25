@@ -1,5 +1,5 @@
 import React from 'react';
-import {MainHeader} from '../../../menu';
+import MainHeader from '../../../menu';
 import {
   Content,
   List,
@@ -13,13 +13,23 @@ import {
 } from 'native-base';
 import {UserInfoTab} from '../organisms';
 import * as Progress from 'react-native-progress';
+import {ButtonGreenCenter} from '../atoms';
+import {StyleSheet} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {CVList} from '../templates';
 
 const MyCV = props => {
+  const navigation = useNavigation();
+  const openResult = () => {
+    navigation.navigate('Result');
+  };
+
   return (
     <MainHeader>
       <UserInfoTab two />
       <Content padder>
-        <List>
+        <CVList />
+        {/* <List>
           <ListItem>
             <Body>
               <Text>Mức độ hoàn thiện hồ sơ : 50%</Text>
@@ -134,7 +144,13 @@ const MyCV = props => {
               </Button>
             </Right>
           </ListItem>
-        </List>
+          <ListItem thumbnail>
+            <ButtonGreenCenter
+              text="Sửa thông tin cá nhân"
+              onPress={openResult}
+            />
+          </ListItem>
+        </List> */}
       </Content>
     </MainHeader>
   );

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Segment, Button, Text, Icon} from 'native-base';
 import styled from 'styled-components';
 import {useNavigation} from '@react-navigation/native';

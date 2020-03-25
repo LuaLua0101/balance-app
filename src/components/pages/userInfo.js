@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import {Logo} from '../atoms';
+import {Logo, ButtonGreenCenter} from '../atoms';
 import {Icon, Content, Form, Item, Picker, Spinner} from 'native-base';
-import {MainHeader} from '../../../menu';
+import MainHeader from '../../../menu';
 import {UserInfoTab} from '../organisms';
 import DatePicker from 'react-native-datepicker';
 
@@ -65,100 +65,100 @@ const EditUserInfo = props => {
         <TextInput placeholder="Icon Textbox" />
       </Item>
       <Item fixedLabel last>
-        <TouchableOpacity
-          style={styles.buttonContainer}
-          onPress={props.activeView}>
-          <Text style={{color: '#fff'}}>Cập nhật thông tin</Text>
-        </TouchableOpacity>
+        <ButtonGreenCenter text="Cập nhật thông tin cá nhân" />
       </Item>
     </Form>
   );
 };
 
-export default class UserInfo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {order: VIEW}; //view info screen
-  }
+const UserInfo = props => {
+  const [order, setOrder] = useState(VIEW);
 
-  activeLoading = () => {
-    this.setState({
-      ...this.state,
-      order: LOADING,
-    });
+  const activeLoading = () => {
+    setOrder(LOADING);
   };
 
-  activeView = () => {
-    this.setState({
-      ...this.state,
-      order: VIEW,
-    });
+  const activeView = () => {
+    setOrder(VIEW);
   };
 
-  render() {
-    return (
-      <MainHeader>
-        <UserInfoTab one />
-        <Content padder>
-          <View style={styles.container}>
-            <Logo
-              source={require('../../../assest/logo.png')}
-              style={{height: 200}}
-            />
-            <Image
-              style={styles.avatar}
-              source={{
-                uri: 'https://bootdey.com/img/Content/avatar/avatar6.png',
-              }}
-            />
-            <View style={styles.body}>
-              {this.state.order === EDIT ? (
-                <EditUserInfo
-                  activeLoading={this.activeLoading}
-                  activeView={this.activeView}
+  const activeEdit = () => {
+    setOrder(EDIT);
+  };
+
+  return (
+    <MainHeader>
+      <UserInfoTab one />
+      <Content padder>
+        <View style={styles.container}>
+          <Logo
+            source={require('../../../assest/logo.png')}
+            style={{height: 200}}
+          />
+          <Image
+            style={styles.avatar}
+            source={{
+              uri: 'https://bootdey.com/img/Content/avatar/avatar6.png',
+            }}
+          />
+          <View style={styles.body}>
+            {order === EDIT ? (
+              <EditUserInfo
+                activeLoading={activeLoading}
+                activeView={activeView}
+              />
+            ) : order === VIEW ? (
+              <View style={styles.bodyContent}>
+                <Text style={styles.name}>John Doe</Text>
+                <Text>
+                  <Image
+                    style={styles.image}
+                    source={require('../../../assest/salary.png')}
+                  />
+                  <Text style={styles.info}> Nữ / 26 tuổi</Text>
+                </Text>
+                <Text>
+                  <Icon type="AntDesign" name="home" style={styles.icon} />
+                  <Text style={styles.info}> Nữ / 26 tuổi</Text>
+                </Text>
+                <Text>
+                  <Icon type="AntDesign" name="mail" style={styles.icon} />
+                  <Text style={styles.info}> Nữ / 26 tuổi</Text>
+                </Text>
+                <Text>
+                  <Icon type="AntDesign" name="phone" style={styles.icon} />
+                  <Text style={styles.info}> Nữ / 26 tuổi</Text>
+                </Text>
+                <ButtonGreenCenter
+                  text="Sửa thông tin cá nhân"
+                  onPress={activeEdit}
                 />
-              ) : this.state.order === VIEW ? (
-                <View style={styles.bodyContent}>
-                  <Text style={styles.name}>John Doe</Text>
-                  <Text style={styles.info}>
-                    <Icon type="AntDesign" name="user" style={styles.info} />
-                    Nữ / 26 tuổi
-                  </Text>
-                  <Text style={styles.info}>
-                    <Icon type="AntDesign" name="home" style={styles.info} />
-                    Địa chỉ
-                  </Text>
-                  <Text style={styles.info}>
-                    <Icon type="AntDesign" name="mail" style={styles.info} />
-                    Email
-                  </Text>
-                  <Text style={styles.info}>
-                    <Icon type="AntDesign" name="phone" style={styles.info} />
-                    1234567890
-                  </Text>
-                  <TouchableOpacity
-                    style={styles.buttonContainer}
-                    onPress={() =>
-                      this.setState({
-                        ...this.state,
-                        order: EDIT,
-                      })
-                    }>
-                    <Text style={{color: '#fff'}}>Sửa thông tin cá nhân</Text>
-                  </TouchableOpacity>
-                </View>
-              ) : (
-                <Spinner />
-              )}
-            </View>
+              </View>
+            ) : (
+              <Spinner />
+            )}
           </View>
-        </Content>
-      </MainHeader>
-    );
-  }
-}
+        </View>
+      </Content>
+    </MainHeader>
+  );
+};
+
+export default UserInfo;
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#808080',
+    shadowOffset: {
+      width: 0,
+      height: 9,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 12.35,
+
+    elevation: 10,
+  },
   avatar: {
     width: 130,
     height: 130,
@@ -185,13 +185,17 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 28,
-    color: '#696969',
-    fontWeight: '600',
+    color: '#8b929b',
+    fontWeight: 'bold',
   },
   info: {
-    fontSize: 16,
-    color: '#3397d5',
+    fontSize: 18,
+    color: '#8b929b',
     marginTop: 10,
+  },
+  icon: {
+    fontSize: 32,
+    color: '#8fbd40',
   },
   description: {
     fontSize: 16,

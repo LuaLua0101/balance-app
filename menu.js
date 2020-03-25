@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
-import {Logo, Button as Link} from './src/components/atoms';
+import {Logo, ButtonBlue as Link, ButtonGreen} from './src/components/atoms';
 import {
   Drawer,
   Header,
@@ -15,7 +15,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native';
 
-export const Menu = props => {
+const SideMenu = props => {
   const navigation = useNavigation();
 
   return (
@@ -24,29 +24,23 @@ export const Menu = props => {
         <Logo source={require('./assest/logo.png')} />
       </View>
       <View>
-        <Link
-          text="Trang chủ"
-          link
-          onPress={() => navigation.navigate('Main')}
-        />
-        <Link
-          text="Khóa học"
-          link
-          onPress={() => navigation.navigate('Course')}
-        />
-        <Link text="Việc làm" link onPress={() => navigation.navigate('Job')} />
+        <Link text="Trang chủ" onPress={() => navigation.navigate('Main')} />
+        <Link text="Khóa học" onPress={() => navigation.navigate('Course')} />
+        <Link text="Việc làm" onPress={() => navigation.navigate('Job')} />
         <Link
           text="Test & Ebook"
-          link
           onPress={() => navigation.navigate('TestEbook')}
         />
-        <Link text="Đăng xuất" link />
+        <ButtonGreen
+          text="Đăng xuất"
+          onPress={() => navigation.navigate('Login')}
+        />
       </View>
     </View>
   );
 };
 
-export const RightMenu = props => {
+const RightMenu = props => {
   const navigation = useNavigation();
 
   return (
@@ -62,7 +56,7 @@ export const RightMenu = props => {
   );
 };
 
-export const HeaderTitle = props => {
+const HeaderTitle = props => {
   const navigation = useNavigation();
 
   return (
@@ -72,7 +66,11 @@ export const HeaderTitle = props => {
   );
 };
 
-export class MainHeader extends Component {
+export default class MainHeader extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   closeDrawer = () => {
     this.drawer._root.close();
   };
@@ -83,27 +81,25 @@ export class MainHeader extends Component {
 
   render() {
     return (
-      <>
-        <Drawer
-          ref={ref => {
-            this.drawer = ref;
-          }}
-          content={<Menu />}
-          onClose={this.closeDrawer}>
-          <Header style={{backgroundColor: '#3397d5'}}>
-            <Left>
-              <Button transparent onPress={this.openDrawer}>
-                <Icon name="menu" />
-              </Button>
-            </Left>
-            <Body>
-              <HeaderTitle />
-            </Body>
-            <RightMenu />
-          </Header>
-          {this.props.children}
-        </Drawer>
-      </>
+      <Drawer
+        ref={ref => {
+          this.drawer = ref;
+        }}
+        content={<SideMenu />}
+        onClose={this.closeDrawer}>
+        <Header style={{backgroundColor: '#3397d5'}}>
+          <Left>
+            <Button transparent onPress={this.openDrawer}>
+              <Icon name="menu" />
+            </Button>
+          </Left>
+          <Body>
+            <HeaderTitle />
+          </Body>
+          <RightMenu />
+        </Header>
+        {this.props.children}
+      </Drawer>
     );
   }
 }
