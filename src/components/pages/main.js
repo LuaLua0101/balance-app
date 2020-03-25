@@ -7,7 +7,7 @@ import * as cnt from '../../utilities/constants';
 const Main = props => {
   return (
     <MainHeader>
-      <MenuTab />
+      <MenuTab main />
       <Content padder>
         <SimpleBlock type={cnt.KHOAHOCTUYETVOI} />
         <SimpleBlock type={cnt.VIECGANBAN} />

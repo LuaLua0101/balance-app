@@ -7,7 +7,7 @@ import * as cnt from '../../utilities/constants';
 const Job = props => {
   return (
     <MainHeader>
-      <MenuTab />
+      <MenuTab job />
       <Content padder>
         <SimpleBlock type={cnt.KHOAHOCTUYETVOI} />
         <SimpleBlock type={cnt.VIECGANBAN} />

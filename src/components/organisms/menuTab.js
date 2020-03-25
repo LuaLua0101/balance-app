@@ -13,18 +13,42 @@ const MenuTab = props => {
 
   return (
     <CustomSegment>
-      <Button first onPress={() => navigation.navigate('Main')}>
-        <Icon name="home" />
-      </Button>
-      <Button last onPress={() => navigation.navigate('Course')}>
-        <Text>Khóa học</Text>
-      </Button>
-      <Button last onPress={() => navigation.navigate('Job')}>
-        <Text>Việc làm</Text>
-      </Button>
-      <Button last onPress={() => navigation.navigate('TestEbook')}>
-        <Text>Test & ebook</Text>
-      </Button>
+      {props.main ? (
+        <Button first onPress={() => navigation.navigate('Main')} active>
+          <Icon name="home" />
+        </Button>
+      ) : (
+        <Button first onPress={() => navigation.navigate('Main')}>
+          <Icon name="home" />
+        </Button>
+      )}
+      {props.course ? (
+        <Button last onPress={() => navigation.navigate('Course')} active>
+          <Text>Khóa học</Text>
+        </Button>
+      ) : (
+        <Button last onPress={() => navigation.navigate('Course')}>
+          <Text>Khóa học</Text>
+        </Button>
+      )}
+      {props.job ? (
+        <Button last onPress={() => navigation.navigate('Job')} active>
+          <Text>Việc làm</Text>
+        </Button>
+      ) : (
+        <Button last onPress={() => navigation.navigate('Job')}>
+          <Text>Việc làm</Text>
+        </Button>
+      )}
+      {props.test ? (
+        <Button last onPress={() => navigation.navigate('TestEbook')} active>
+          <Text>Test & ebook</Text>
+        </Button>
+      ) : (
+        <Button last onPress={() => navigation.navigate('TestEbook')}>
+          <Text>Test & ebook</Text>
+        </Button>
+      )}
     </CustomSegment>
   );
 };

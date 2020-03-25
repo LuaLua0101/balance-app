@@ -5,3 +5,4 @@ export {default as Job} from './job';
 export {default as TestEbook} from './testEbook';
 export {default as Notify} from './notify';
 export {default as UserInfo} from './userInfo';
+export {default as MyCV} from './myCV';

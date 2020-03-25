@@ -9,6 +9,7 @@ import {
   TestEbook,
   Notify,
   UserInfo,
+  MyCV,
 } from './src/components/pages';
 
 const Stack = createStackNavigator();
@@ -27,6 +28,7 @@ const Routes = () => {
         <Stack.Screen name="TestEbook" component={TestEbook} />
         <Stack.Screen name="Notify" component={Notify} />
         <Stack.Screen name="UserInfo" component={UserInfo} />
+        <Stack.Screen name="MyCV" component={MyCV} />
       </Stack.Navigator>
     </NavigationContainer>
   );

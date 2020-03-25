@@ -25,7 +25,7 @@ const Course = props => {
         <SimpleBlock type={cnt.DNTHIEUBAN} />
         <SimpleBlock type={cnt.HOCDELUONGCAO} />
       </Content>
-      <MenuTab />
+      <MenuTab course />
     </MainHeader>
   );
 };

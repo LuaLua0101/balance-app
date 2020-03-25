@@ -7,7 +7,7 @@ import * as cnt from '../../utilities/constants';
 const TestEbook = props => {
   return (
     <MainHeader>
-      <MenuTab />
+      <MenuTab test />
       <Content padder>
         <SimpleBlock type={cnt.KHOAHOCTUYETVOI} />
         <SimpleBlock type={cnt.VIECGANBAN} />

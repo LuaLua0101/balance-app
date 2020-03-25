@@ -13,6 +13,7 @@ import {
   Button,
 } from 'native-base';
 import {useNavigation} from '@react-navigation/native';
+import {TouchableOpacity} from 'react-native';
 
 export const Menu = props => {
   const navigation = useNavigation();
@@ -61,6 +62,16 @@ export const RightMenu = props => {
   );
 };
 
+export const HeaderTitle = props => {
+  const navigation = useNavigation();
+
+  return (
+    <TouchableOpacity onPress={() => navigation.navigate('Main')}>
+      <Title>Balance App</Title>
+    </TouchableOpacity>
+  );
+};
+
 export class MainHeader extends Component {
   closeDrawer = () => {
     this.drawer._root.close();
@@ -86,7 +97,7 @@ export class MainHeader extends Component {
               </Button>
             </Left>
             <Body>
-              <Title>Balance App</Title>
+              <HeaderTitle />
             </Body>
             <RightMenu />
           </Header>
