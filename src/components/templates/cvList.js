@@ -1,81 +1,150 @@
-import React, {Component} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  FlatList,
-  Dimensions,
-  Alert,
-  ScrollView,
-} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import * as Progress from 'react-native-progress';
 
-export default class CVList extends Component {
-  render() {
-    return (
-      <>
-        <TouchableOpacity style={styles.card}>
-          <View style={{marginLeft: 'auto', marginRight: 'auto'}}>
-            <Text style={styles.name}>Mức độ hoàn thiện hồ sơ : 50%</Text>
-            <Progress.Bar progress={0.5} width={null} />
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.card}>
-          <Image
-            style={styles.image}
-            source={require('../../../assest/bachelor.png')}
-          />
-          <View style={styles.cardContent}>
-            <Text style={styles.name}>Bằng cấp</Text>
-            <Text style={styles.count}>33333</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.card}>
-          <Image
-            style={styles.image}
-            source={require('../../../assest/salary.png')}
-          />
-          <View style={styles.cardContent}>
-            <Text style={styles.name}>Lương mong muốn</Text>
-            <Text style={styles.count}>33333</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.card}>
-          <Image
-            style={styles.image}
-            source={require('../../../assest/skill.png')}
-          />
-          <View style={styles.cardContent}>
-            <Text style={styles.name}>Kỹ năng</Text>
-            <Text style={styles.count}>33333</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.card}>
-          <Image
-            style={styles.image}
-            source={require('../../../assest/worker.png')}
-          />
-          <View style={styles.cardContent}>
-            <Text style={styles.name}>Vị trí mong muốn</Text>
-            <Text style={styles.count}>33333</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.card}>
-          <Image
-            style={styles.image}
-            source={require('../../../assest/schedule.png')}
-          />
-          <View style={styles.cardContent}>
-            <Text style={styles.name}>Thời gian làm việc</Text>
-            <Text style={styles.count}>33333</Text>
-          </View>
-        </TouchableOpacity>
-      </>
-    );
-  }
-}
+import {
+  EditSalaryForm,
+  EditDegreeForm,
+  EditScheduleForm,
+  EditSkillForm,
+  EditExpectJobForm,
+} from '.';
+
+const CVList = props => {
+  const [modalSalary, setModalSalary] = useState(false);
+  const [modalSchedule, setModalSchedule] = useState(false);
+  const [modalSkill, setModalSkill] = useState(false);
+  const [modalExpectedJob, setModalExpectedJob] = useState(false);
+  const [modalDegree, setModalDegree] = useState(false);
+
+  const openModalSalary = () => {
+    setModalSalary(true);
+  };
+
+  const openModalSchedule = () => {
+    setModalSchedule(true);
+  };
+
+  const openModalSkill = () => {
+    setModalSkill(true);
+  };
+
+  const openModalExpectedJob = () => {
+    setModalExpectedJob(true);
+  };
+
+  const openModalDegree = () => {
+    setModalDegree(true);
+  };
+
+  const closeModalSalary = () => {
+    setModalSalary(false);
+  };
+
+  const closeModalSkill = () => {
+    setModalSkill(false);
+  };
+
+  const closeModalShedule = () => {
+    setModalSchedule(false);
+  };
+
+  const closeModalExpectedJob = () => {
+    setModalExpectedJob(false);
+  };
+
+  const closeModalDegree = () => {
+    setModalDegree(false);
+  };
+
+  return (
+    <>
+      <EditSalaryForm
+        modal={modalSalary}
+        openModal={openModalSalary}
+        closeModal={closeModalSalary}
+      />
+      <EditDegreeForm
+        modal={modalDegree}
+        openModal={openModalDegree}
+        closeModal={closeModalDegree}
+      />
+      <EditScheduleForm
+        modal={modalSchedule}
+        openModal={openModalSchedule}
+        closeModal={closeModalShedule}
+      />
+      <EditSkillForm
+        modal={modalSkill}
+        openModal={openModalSkill}
+        closeModal={closeModalSkill}
+      />
+      <EditExpectJobForm
+        modal={modalExpectedJob}
+        openModal={openModalExpectedJob}
+        closeModal={closeModalExpectedJob}
+      />
+      <View style={styles.card}>
+        <View style={{marginLeft: 'auto', marginRight: 'auto'}}>
+          <Text style={styles.name}>Mức độ hoàn thiện hồ sơ : 50%</Text>
+          <Progress.Bar progress={0.5} width={null} />
+        </View>
+      </View>
+      <TouchableOpacity style={styles.card} onPress={openModalDegree}>
+        <Image
+          style={styles.image}
+          source={require('../../../assest/bachelor.png')}
+        />
+        <View style={styles.cardContent}>
+          <Text style={styles.name}>Bằng cấp</Text>
+          <Text style={styles.count}>33333</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.card} onPress={openModalSalary}>
+        <Image
+          style={styles.image}
+          source={require('../../../assest/salary.png')}
+        />
+        <View style={styles.cardContent}>
+          <Text style={styles.name}>Lương mong muốn</Text>
+          <Text style={styles.count}>33333</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.card} onPress={openModalSkill}>
+        <Image
+          style={styles.image}
+          source={require('../../../assest/skill.png')}
+        />
+        <View style={styles.cardContent}>
+          <Text style={styles.name}>Kỹ năng</Text>
+          <Text style={styles.count}>33333</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.card} onPress={openModalExpectedJob}>
+        <Image
+          style={styles.image}
+          source={require('../../../assest/worker.png')}
+        />
+        <View style={styles.cardContent}>
+          <Text style={styles.name}>Vị trí mong muốn</Text>
+          <Text style={styles.count}>33333</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.card} onPress={openModalSchedule}>
+        <Image
+          style={styles.image}
+          source={require('../../../assest/schedule.png')}
+        />
+        <View style={styles.cardContent}>
+          <Text style={styles.name}>Thời gian làm việc</Text>
+          <Text style={styles.count}>33333</Text>
+        </View>
+      </TouchableOpacity>
+    </>
+  );
+};
+
+export default CVList;
 
 const styles = StyleSheet.create({
   cardContent: {

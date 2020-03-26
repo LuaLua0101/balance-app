@@ -8,3 +8,4 @@ export {default as Card} from './card';
 export {default as GreenText} from './greenText';
 export {default as DarkText} from './darkText';
 export {default as ButtonShowMore} from './buttonShowMore';
+export {default as DateSelector} from './datePicker';
