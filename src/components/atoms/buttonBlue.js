@@ -1,17 +1,17 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 
-const ButtonGreen = props => {
+const ButtonBlue = props => {
   return (
     <TouchableOpacity
       style={[styles.buttonContainer, styles.loginButton]}
       onPress={props.onPress}>
-      <Text style={styles.loginText}>{props.text}</Text>
+      <Text style={[styles.loginText]}>{props.text}</Text>
     </TouchableOpacity>
   );
 };
 
-export default ButtonGreen;
+export default ButtonBlue;
 
 const styles = StyleSheet.create({
   buttonContainer: {
@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
     width: 300,
     borderRadius: 30,
     backgroundColor: 'transparent',

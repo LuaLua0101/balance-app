@@ -5,6 +5,7 @@ import {CourseTab, MenuTab, SimpleBlock, SearchBar} from '../organisms';
 import * as cnt from '../../utilities/constants';
 import {DarkText as Text} from '../atoms';
 import styled from 'styled-components';
+import {useNavigation} from '@react-navigation/native';
 
 const CustomCard = styled(Card)`
   shadow-color: #808080;
@@ -13,6 +14,12 @@ const CustomCard = styled(Card)`
 `;
 
 const Course = props => {
+  const navigation = useNavigation();
+
+  const toViewAll = () => {
+    navigation.navigate('CourseViewAll');
+  };
+
   return (
     <MainHeader>
       <SearchBar />
@@ -31,11 +38,11 @@ const Course = props => {
             </Body>
           </CardItem>
         </CustomCard>
-        <SimpleBlock type={cnt.CHUDEKHOAHOC} />
-        <SimpleBlock type={cnt.KYNANGMEMHOT} />
-        <SimpleBlock type={cnt.KHQUANLY} />
-        <SimpleBlock type={cnt.DNTHIEUBAN} />
-        <SimpleBlock type={cnt.HOCDELUONGCAO} />
+        <SimpleBlock type={cnt.CHUDEKHOAHOC} more={toViewAll} />
+        <SimpleBlock type={cnt.KYNANGMEMHOT} more={toViewAll} />
+        <SimpleBlock type={cnt.KHQUANLY} more={toViewAll} />
+        <SimpleBlock type={cnt.DNTHIEUBAN} more={toViewAll} />
+        <SimpleBlock type={cnt.HOCDELUONGCAO} more={toViewAll} />
       </Content>
       <MenuTab course />
     </MainHeader>

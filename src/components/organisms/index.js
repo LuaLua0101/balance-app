@@ -4,3 +4,6 @@ export {default as CourseTab} from './courseTab';
 export {default as UserInfoTab} from './userInfoTab';
 export {default as SearchBar} from './searchBar';
 export {default as JobCard} from './jobCard';
+export {default as CourseCard} from './courseCard';
+export {default as Syllabus} from './syllabus';
+export {default as CourseRating} from './courseRating';

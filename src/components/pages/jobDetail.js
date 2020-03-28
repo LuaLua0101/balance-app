@@ -29,6 +29,7 @@ import {Col, Grid} from 'react-native-easy-grid';
 const JobDetail = props => {
   return (
     <MainHeader>
+      <MenuTab job />
       <Content padder>
         <View style={styles.container}>
           <Logo

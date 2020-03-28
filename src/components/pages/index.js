@@ -10,3 +10,5 @@ export {default as MyCV} from './myCV';
 export {default as Result} from './result';
 export {default as JobViewAll} from './jobViewAll';
 export {default as JobDetail} from './jobDetail';
+export {default as CourseViewAll} from './courseViewAll';
+export {default as CourseDetail} from './courseDetail';
