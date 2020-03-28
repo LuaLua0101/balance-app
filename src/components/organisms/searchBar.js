@@ -47,7 +47,7 @@ const SearchBar = props => {
               marginRight: 'auto',
               justifyContent: 'center',
             }}
-            source={require('../../../assest/search.png')}
+            source={require('../../../assets/search.png')}
           />
         </TouchableOpacity>
       </Item>

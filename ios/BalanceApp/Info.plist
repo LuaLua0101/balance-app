@@ -74,6 +74,12 @@
 		<string>rubicon-icon-font.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>GeomanistBook.ttf</string>
+		<string>GeomanistLight.ttf</string>
+		<string>GeomanistMedium.ttf</string>
+		<string>GeomanistRegular.ttf</string>
+		<string>Geomanist-Regular-Italic.otf</string>
+		<string>Geomanist-Regular.otf</string>
 	</array>
 </dict>
 </plist>

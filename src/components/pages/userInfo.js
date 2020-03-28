@@ -42,7 +42,7 @@ const UserInfo = props => {
       <Content padder>
         <View style={styles.container}>
           <Logo
-            source={require('../../../assest/logo.png')}
+            source={require('../../../assets/logo.png')}
             style={{height: 200}}
           />
           <Image
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 26,
-    color: '#8fbd40',
+    color: '#8bc94d',
   },
   description: {
     fontSize: 16,
@@ -188,6 +188,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     width: 250,
     borderRadius: 30,
-    backgroundColor: '#3397d5',
+    backgroundColor: '#4dc4ff',
   },
 });

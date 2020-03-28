@@ -21,7 +21,7 @@ const SideMenu = props => {
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
       <View>
-        <Logo source={require('./assest/logo.png')} />
+        <Logo source={require('./assets/logo.png')} />
       </View>
       <View>
         <Link text="Trang chủ" onPress={() => navigation.navigate('Main')} />
@@ -87,7 +87,7 @@ export default class MainHeader extends Component {
         }}
         content={<SideMenu />}
         onClose={this.closeDrawer}>
-        <Header style={{backgroundColor: '#3397d5'}}>
+        <Header style={{backgroundColor: '#4dc4ff'}}>
           <Left>
             <Button transparent onPress={this.openDrawer}>
               <Icon name="menu" />

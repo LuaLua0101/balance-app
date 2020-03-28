@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   loginButton: {
-    backgroundColor: '#3397d5',
+    backgroundColor: '#4dc4ff',
 
     shadowColor: '#808080',
     shadowOffset: {
@@ -39,5 +39,6 @@ const styles = StyleSheet.create({
   },
   loginText: {
     color: '#fff',
+    fontFamily: 'GeomanistRegular',
   },
 });

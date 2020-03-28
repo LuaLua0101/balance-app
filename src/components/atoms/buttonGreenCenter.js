@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   loginButton: {
     marginLeft: 'auto',
     marginRight: 'auto',
-    backgroundColor: '#8fbd40',
+    backgroundColor: '#8bc94d',
     shadowColor: '#808080',
     shadowOffset: {
       width: 0,

@@ -8,3 +8,5 @@ export {default as Notify} from './notify';
 export {default as UserInfo} from './userInfo';
 export {default as MyCV} from './myCV';
 export {default as Result} from './result';
+export {default as JobViewAll} from './jobViewAll';
+export {default as JobDetail} from './jobDetail';

@@ -50,7 +50,7 @@ const SimpleBlock = props => {
             <GreenText title>{data && data.title}</GreenText>
           </Col>
           <Col size={25}>
-            <ButtonShowMore text="Xem thêm" />
+            <ButtonShowMore text="Xem thêm" onPress={props.more} />
           </Col>
         </Grid>
       </CardItem>

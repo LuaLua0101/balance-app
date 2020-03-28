@@ -35,6 +35,12 @@
 		732FC746DEEE4B2AB5AA3A90 /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75EB69151F2547ECB5ED911B /* rubicon-icon-font.ttf */; };
 		07A0CB62AD4C49F38BE3EA97 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C41C13866E62488598FF403F /* SimpleLineIcons.ttf */; };
 		AC97D11DB0AE4859B0A88D49 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A8A5984602E454D85093217 /* Zocial.ttf */; };
+		A26DA8240AD3491A9140D543 /* GeomanistBook.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 79483029B2D7436BBC289B33 /* GeomanistBook.ttf */; };
+		107E08640B0B40F899E042C2 /* GeomanistLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3B1B0CEA9EE44659A0F7EF6 /* GeomanistLight.ttf */; };
+		6648F61D3985470584FBCCA5 /* GeomanistMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2AD82B6BDD644E2ACA31BA1 /* GeomanistMedium.ttf */; };
+		6868C1B0B2F948A197FCD3A0 /* GeomanistRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53C84685DEDF49CA846A23B9 /* GeomanistRegular.ttf */; };
+		95AFB4216D8C4945945FBA57 /* Geomanist-Regular-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D3E44AE36EEE43EFA8362FBE /* Geomanist-Regular-Italic.otf */; };
+		6BEF47996CA9486397D624DC /* Geomanist-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 34D9D57B754F4B81A8703688 /* Geomanist-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +95,12 @@
 		75EB69151F2547ECB5ED911B /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		C41C13866E62488598FF403F /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		0A8A5984602E454D85093217 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		79483029B2D7436BBC289B33 /* GeomanistBook.ttf */ = {isa = PBXFileReference; name = "GeomanistBook.ttf"; path = "../assets/fonts/GeomanistBook.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E3B1B0CEA9EE44659A0F7EF6 /* GeomanistLight.ttf */ = {isa = PBXFileReference; name = "GeomanistLight.ttf"; path = "../assets/fonts/GeomanistLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C2AD82B6BDD644E2ACA31BA1 /* GeomanistMedium.ttf */ = {isa = PBXFileReference; name = "GeomanistMedium.ttf"; path = "../assets/fonts/GeomanistMedium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		53C84685DEDF49CA846A23B9 /* GeomanistRegular.ttf */ = {isa = PBXFileReference; name = "GeomanistRegular.ttf"; path = "../assets/fonts/GeomanistRegular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D3E44AE36EEE43EFA8362FBE /* Geomanist-Regular-Italic.otf */ = {isa = PBXFileReference; name = "Geomanist-Regular-Italic.otf"; path = "../assets/fonts/Geomanist-Regular-Italic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		34D9D57B754F4B81A8703688 /* Geomanist-Regular.otf */ = {isa = PBXFileReference; name = "Geomanist-Regular.otf"; path = "../assets/fonts/Geomanist-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +230,12 @@
 				75EB69151F2547ECB5ED911B /* rubicon-icon-font.ttf */,
 				C41C13866E62488598FF403F /* SimpleLineIcons.ttf */,
 				0A8A5984602E454D85093217 /* Zocial.ttf */,
+				79483029B2D7436BBC289B33 /* GeomanistBook.ttf */,
+				E3B1B0CEA9EE44659A0F7EF6 /* GeomanistLight.ttf */,
+				C2AD82B6BDD644E2ACA31BA1 /* GeomanistMedium.ttf */,
+				53C84685DEDF49CA846A23B9 /* GeomanistRegular.ttf */,
+				D3E44AE36EEE43EFA8362FBE /* Geomanist-Regular-Italic.otf */,
+				34D9D57B754F4B81A8703688 /* Geomanist-Regular.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -378,6 +396,12 @@
 				732FC746DEEE4B2AB5AA3A90 /* rubicon-icon-font.ttf in Resources */,
 				07A0CB62AD4C49F38BE3EA97 /* SimpleLineIcons.ttf in Resources */,
 				AC97D11DB0AE4859B0A88D49 /* Zocial.ttf in Resources */,
+				A26DA8240AD3491A9140D543 /* GeomanistBook.ttf in Resources */,
+				107E08640B0B40F899E042C2 /* GeomanistLight.ttf in Resources */,
+				6648F61D3985470584FBCCA5 /* GeomanistMedium.ttf in Resources */,
+				6868C1B0B2F948A197FCD3A0 /* GeomanistRegular.ttf in Resources */,
+				95AFB4216D8C4945945FBA57 /* Geomanist-Regular-Italic.otf in Resources */,
+				6BEF47996CA9486397D624DC /* Geomanist-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

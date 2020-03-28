@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   loginButton: {
-    backgroundColor: '#8fbd40',
+    backgroundColor: '#8bc94d',
 
     shadowColor: '#808080',
     shadowOffset: {

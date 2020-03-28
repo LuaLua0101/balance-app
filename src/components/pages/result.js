@@ -13,7 +13,7 @@ const Result = props => {
         <View style={styles.container}>
           <Image
             style={styles.icon}
-            source={require('../../../assest/banlatrieuphu.jpg')}
+            source={require('../../../assets/banlatrieuphu.jpg')}
           />
           <Text style={styles.title}>
             Congratulation, your order is accepted

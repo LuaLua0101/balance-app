@@ -7,7 +7,7 @@ const Register = props => {
   return (
     <>
       <Logo
-        source={require('../../../assest/logo.png')}
+        source={require('../../../assets/logo.png')}
         style={{marginBottom: 0, backgroundColor: '#fff'}}
       />
       <View

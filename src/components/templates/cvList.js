@@ -93,7 +93,7 @@ const CVList = props => {
       <TouchableOpacity style={styles.card} onPress={openModalDegree}>
         <Image
           style={styles.image}
-          source={require('../../../assest/bachelor.png')}
+          source={require('../../../assets/bachelor.png')}
         />
         <View style={styles.cardContent}>
           <Text style={styles.name}>Bằng cấp</Text>
@@ -103,7 +103,7 @@ const CVList = props => {
       <TouchableOpacity style={styles.card} onPress={openModalSalary}>
         <Image
           style={styles.image}
-          source={require('../../../assest/salary.png')}
+          source={require('../../../assets/salary.png')}
         />
         <View style={styles.cardContent}>
           <Text style={styles.name}>Lương mong muốn</Text>
@@ -113,7 +113,7 @@ const CVList = props => {
       <TouchableOpacity style={styles.card} onPress={openModalSkill}>
         <Image
           style={styles.image}
-          source={require('../../../assest/skill.png')}
+          source={require('../../../assets/skill.png')}
         />
         <View style={styles.cardContent}>
           <Text style={styles.name}>Kỹ năng</Text>
@@ -123,7 +123,7 @@ const CVList = props => {
       <TouchableOpacity style={styles.card} onPress={openModalExpectedJob}>
         <Image
           style={styles.image}
-          source={require('../../../assest/worker.png')}
+          source={require('../../../assets/worker.png')}
         />
         <View style={styles.cardContent}>
           <Text style={styles.name}>Vị trí mong muốn</Text>
@@ -133,7 +133,7 @@ const CVList = props => {
       <TouchableOpacity style={styles.card} onPress={openModalSchedule}>
         <Image
           style={styles.image}
-          source={require('../../../assest/schedule.png')}
+          source={require('../../../assets/schedule.png')}
         />
         <View style={styles.cardContent}>
           <Text style={styles.name}>Thời gian làm việc</Text>
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     flex: 1,
     alignSelf: 'center',
-    color: '#3397d5',
+    color: '#4dc4ff',
     fontWeight: 'bold',
   },
   count: {
@@ -198,10 +198,10 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: 'white',
     borderWidth: 1,
-    borderColor: '#8fbd40',
+    borderColor: '#8bc94d',
   },
   followButtonText: {
-    color: '#8fbd40',
+    color: '#8bc94d',
     fontSize: 14,
   },
 });
