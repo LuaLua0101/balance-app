@@ -13,3 +13,4 @@ export {default as JobDetail} from './jobDetail';
 export {default as CourseViewAll} from './courseViewAll';
 export {default as CourseDetail} from './courseDetail';
 export {default as TestViewAll} from './testViewAll';
+export {default as Bookmark} from './bookmark';

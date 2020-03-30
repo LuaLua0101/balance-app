@@ -7,3 +7,6 @@ export {default as EditDegreeForm} from './editDegreeForm';
 export {default as EditExpectJobForm} from './editExpectJobForm';
 export {default as EditScheduleForm} from './editScheduleForm';
 export {default as EditSkillForm} from './editSkillForm';
+export {default as SavedCompanies} from './savedCompanies';
+export {default as SavedCourses} from './savedCourses';
+export {default as SavedJobs} from './savedJobs';

@@ -1,20 +1,9 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, Image, TextInput} from 'react-native';
-import {Logo, ButtonGreenCenter, TextBox} from '../atoms';
-import {
-  Icon,
-  Content,
-  Form,
-  Item,
-  Picker,
-  Spinner,
-  Card,
-  CardItem,
-  Body,
-} from 'native-base';
+import {StyleSheet, Text, View, Image} from 'react-native';
+import {Logo, ButtonGreenCenter} from '../atoms';
+import {Icon, Content, Spinner, Card, CardItem} from 'native-base';
 import MainHeader from '../../../menu';
 import {UserInfoTab} from '../organisms';
-import DatePicker from 'react-native-datepicker';
 import {EditUserInfoForm} from '../templates';
 
 const VIEW = 0;

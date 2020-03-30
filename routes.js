@@ -17,6 +17,7 @@ import {
   CourseViewAll,
   CourseDetail,
   TestViewAll,
+  Bookmark,
 } from './src/components/pages';
 
 const Stack = createStackNavigator();
@@ -43,6 +44,7 @@ const Routes = () => {
         <Stack.Screen name="CourseViewAll" component={CourseViewAll} />
         <Stack.Screen name="CourseDetail" component={CourseDetail} />
         <Stack.Screen name="TestViewAll" component={TestViewAll} />
+        <Stack.Screen name="Bookmark" component={Bookmark} />
       </Stack.Navigator>
     </NavigationContainer>
   );

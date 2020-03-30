@@ -63,6 +63,13 @@ const RightMenu = props => {
         <Icon name="md-notifications" style={{fontSize: 26}} />
         <Badge style={{width: 12, height: 12}}></Badge>
       </Button>
+      <Button transparent onPress={() => navigation.navigate('Bookmark')}>
+        <Icon
+          type="MaterialCommunityIcons"
+          name="bookmark-multiple"
+          style={{fontSize: 26}}
+        />
+      </Button>
       <Button transparent onPress={() => navigation.navigate('UserInfo')}>
         <Icon name="ios-contact" style={{fontSize: 36}} />
       </Button>
