@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
-import {Logo, ButtonBlue as Link, ButtonGreen} from './src/components/atoms';
+import {
+  Logo,
+  ButtonBlue as Link,
+  ButtonGreenCenter,
+} from './src/components/atoms';
 import {
   Drawer,
   Header,
@@ -24,14 +28,24 @@ const SideMenu = props => {
         <Logo source={require('./assets/logo.png')} />
       </View>
       <View>
-        <Link text="Trang chủ" onPress={() => navigation.navigate('Main')} />
-        <Link text="Khóa học" onPress={() => navigation.navigate('Course')} />
-        <Link text="Việc làm" onPress={() => navigation.navigate('Job')} />
-        <Link
+        <ButtonGreenCenter
+          text="Trang chủ"
+          onPress={() => navigation.navigate('Main')}
+        />
+        <ButtonGreenCenter
+          text="Khóa học"
+          onPress={() => navigation.navigate('Course')}
+        />
+        <ButtonGreenCenter
+          text="Việc làm"
+          onPress={() => navigation.navigate('Job')}
+        />
+        <ButtonGreenCenter
           text="Test & Ebook"
           onPress={() => navigation.navigate('TestEbook')}
+          style={{marginTop: 10}}
         />
-        <ButtonGreen
+        <ButtonGreenCenter
           text="Đăng xuất"
           onPress={() => navigation.navigate('Login')}
         />
