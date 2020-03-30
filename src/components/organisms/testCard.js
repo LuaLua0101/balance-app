@@ -1,5 +1,7 @@
 import React from 'react';
+import MainHeader from '../../../menu';
 import {
+  Content,
   Card,
   CardItem,
   Thumbnail,
@@ -11,21 +13,21 @@ import {
   Right,
 } from 'native-base';
 import {Image} from 'react-native';
+import {MenuTab, SearchBar} from '.';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
 
-const JobCard = props => {
+const TestCard = props => {
   const navigation = useNavigation();
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('JobDetail')}>
+    <TouchableOpacity onPress={() => navigation.navigate('CourseDetail')}>
       <Card style={{flex: 0}}>
         <CardItem>
           <Left>
-            <Thumbnail source={require('../../../assets/banlatrieuphu.jpg')} />
             <Body>
-              <Text>Nhân viên kinh doanh</Text>
-              <Text note>Hồ Chí Minh</Text>
+              <Text>Tài liệu lập trình PHP</Text>
+              <Text note>{props.document ? 'Tài liệu' : 'Bài test'}</Text>
             </Body>
           </Left>
         </CardItem>
@@ -45,22 +47,19 @@ const JobCard = props => {
           <Left>
             <Button transparent>
               <Icon type="MaterialIcons" name="attach-money" />
-              <Text>8-36 triệu</Text>
+              <Text>200,000đ</Text>
             </Button>
           </Left>
           <Body>
             <Button transparent>
               <Icon active name="chatbubbles" />
-              <Text>2000 ứng tuyển</Text>
+              <Text>2000 người mua</Text>
             </Button>
           </Body>
-          <Right>
-            <Text>11 giờ trước</Text>
-          </Right>
         </CardItem>
       </Card>
     </TouchableOpacity>
   );
 };
 
-export default JobCard;
+export default TestCard;

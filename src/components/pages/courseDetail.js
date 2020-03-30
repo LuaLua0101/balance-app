@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
 import {Footer, FooterTab, Button} from 'native-base';
 import MainHeader from '../../../menu';
-import {MenuTab, Syllabus, CourseRating} from '../organisms';
+import {MenuTab, Syllabus, CourseRating, CommentList} from '../organisms';
+import {Rating} from 'react-native-ratings';
+import {Col, Grid} from 'react-native-easy-grid';
 
 const CourseDetail = props => {
   const [modalRating, setModalRating] = useState(false);
@@ -33,6 +35,7 @@ const CourseDetail = props => {
             </View>
             <View style={styles.postContent}>
               <Text style={styles.postTitle}>Thông tin về khóa học</Text>
+
               <Text style={styles.postDescription}>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
                 commodo ligula eget dolor. Aenean massa. Cum sociis natoque
@@ -40,8 +43,17 @@ const CourseDetail = props => {
                 mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
                 quis, sem. Nulla consequat massa quis enim.
               </Text>
+
               <Text style={styles.tags}>600,000 vnđ</Text>
-              <Text style={styles.date}>2017-11-27 13:03:01</Text>
+              <Grid>
+                <Col size={15}>
+                  <Rating startingValue={5} imageSize={25} readonly />
+                </Col>
+                <Col size={25}>
+                  <Text>400 đánh giá</Text>
+                </Col>
+              </Grid>
+              {/* <Text style={styles.date}>2017-11-27 13:03:01</Text> */}
               <Text style={styles.date}>2000 lượt đăng ký</Text>
 
               <View style={styles.profile}>
@@ -55,6 +67,12 @@ const CourseDetail = props => {
               </View>
             </View>
             <Syllabus style={{alignItems: 'center'}} />
+          </View>
+          <View style={styles.container}>
+            <View style={styles.header2}>
+              <Text style={styles.headerTitle}>Đánh giá khóa học</Text>
+            </View>
+            <CommentList />
           </View>
         </ScrollView>
         <Footer style={{height: 40}}>
@@ -84,6 +102,12 @@ const styles = StyleSheet.create({
     padding: 30,
     alignItems: 'center',
     backgroundColor: '#4dc4ff',
+  },
+  header2: {
+    marginTop: 10,
+    padding: 10,
+    alignItems: 'center',
+    backgroundColor: '#8bc94d',
   },
   headerTitle: {
     fontSize: 30,

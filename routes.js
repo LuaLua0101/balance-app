@@ -16,6 +16,7 @@ import {
   JobDetail,
   CourseViewAll,
   CourseDetail,
+  TestViewAll,
 } from './src/components/pages';
 
 const Stack = createStackNavigator();
@@ -41,6 +42,7 @@ const Routes = () => {
         <Stack.Screen name="JobDetail" component={JobDetail} />
         <Stack.Screen name="CourseViewAll" component={CourseViewAll} />
         <Stack.Screen name="CourseDetail" component={CourseDetail} />
+        <Stack.Screen name="TestViewAll" component={TestViewAll} />
       </Stack.Navigator>
     </NavigationContainer>
   );

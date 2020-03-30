@@ -12,3 +12,4 @@ export {default as JobViewAll} from './jobViewAll';
 export {default as JobDetail} from './jobDetail';
 export {default as CourseViewAll} from './courseViewAll';
 export {default as CourseDetail} from './courseDetail';
+export {default as TestViewAll} from './testViewAll';
