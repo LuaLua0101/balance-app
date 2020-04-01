@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "748216102269",
+    "firebase_url": "https://balanceapp-83970.firebaseio.com",
+    "project_id": "balanceapp-83970",
+    "storage_bucket": "balanceapp-83970.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748216102269:android:1b6b3abfa717985feb3014",
+        "android_client_info": {
+          "package_name": "com.balanceapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748216102269-31jdn28c89o107d82ioh6hki3mabf6f3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEZei_KN6iqz95Bl9VLz7fx_NdVCS1Un4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748216102269-31jdn28c89o107d82ioh6hki3mabf6f3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "748216102269-vfhguh0senkprhr516o2sr6ga76i0tmj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.BalanceApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

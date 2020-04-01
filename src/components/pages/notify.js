@@ -62,15 +62,14 @@ const Notify = props => {
   return (
     <MainHeader>
       <MenuTab />
-      <Content padder>
+      {/* <Content padder> */}
         <View style={styles.container}>
           <FlatList
             style={styles.tasks}
             columnWrapperStyle={styles.listContainer}
             data={data}
-            keyExtractor={item => {
-              return item.id;
-            }}
+            keyExtractor={item => item.id.toString()
+            }
             renderItem={({item}) => {
               return (
                 <TouchableOpacity
@@ -96,7 +95,7 @@ const Notify = props => {
             }}
           />
         </View>
-      </Content>
+      {/* </Content> */}
     </MainHeader>
   );
 };

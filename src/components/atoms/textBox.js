@@ -22,7 +22,7 @@ const TextBox = props => (
           ? 'email-address'
           : props.type === PHONE
           ? 'numeric'
-          : 'text'
+          : 'default'
       }
       secureTextEntry={props.type === PASSWORD}
       underlineColorAndroid="transparent"
