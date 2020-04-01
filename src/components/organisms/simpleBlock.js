@@ -11,19 +11,22 @@ const SimpleBlock = props => {
     data: [
       {
         id: 1,
-        uri: 'http://bit.ly/2GfzooV',
+        uri:
+          'https://nghiencuuquocte.org/wp-content/uploads/2019/03/science.jpg',
         text: 'hinh 1',
       },
       ,
       {
         id: 1,
-        uri: 'http://bit.ly/2GfzooV',
+        uri:
+          'https://nghiencuuquocte.org/wp-content/uploads/2019/03/science.jpg',
         text: 'hinh 1',
       },
       ,
       {
         id: 1,
-        uri: 'http://bit.ly/2GfzooV',
+        uri:
+          'https://nghiencuuquocte.org/wp-content/uploads/2019/03/science.jpg',
         text: 'hinh 1',
       },
     ],

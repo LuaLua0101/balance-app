@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {TouchableOpacity} from 'react-native';
 
 const CustomCard = styled(Card)`
-  width: 200px;
+  width: 150px;
 `;
 
 export default props => (

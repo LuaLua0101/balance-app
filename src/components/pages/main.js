@@ -11,21 +11,21 @@ const Main = props => {
     console.log(fcmToken);
   };
 
-  const checkPermission = async () => {
-    const enabled = await firebase.messaging().hasPermission();
-    if (enabled) {
-      getToken();
-    } else {
-      requestPermission();
-    }
-  };
-
   const requestPermission = async () => {
     try {
       await firebase.messaging().requestPermission();
       getToken();
     } catch (error) {
       console.log('permission rejected');
+    }
+  };
+
+  const checkPermission = async () => {
+    const enabled = await firebase.messaging().hasPermission();
+    if (enabled) {
+      getToken();
+    } else {
+      requestPermission();
     }
   };
 
@@ -44,7 +44,7 @@ const Main = props => {
       firebase.notifications.Android.Importance.Max,
     );
     firebase.notifications().android.createChannel(channel);
-    checkPermission()
+    checkPermission();
     createNotificationListener();
   }, []);
 
