@@ -1,18 +1,26 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {TextBox, DateSelector, ButtonGreen} from '../atoms';
 import {EMAIL, PHONE, PASSWORD} from '../../utilities/constants';
 import {useNavigation} from '@react-navigation/native';
-import {Icon, Content, Form, Item, Picker, Spinner} from 'native-base';
+import {Icon, Item, Picker} from 'native-base';
+import useFormInput from '../../utilities/useFormInput';
 
 const EitUserInfoForm = props => {
   const navigation = useNavigation();
+  const name = useFormInput(props.name);
+  const address = useFormInput(props.address);
+  const dob = useFormInput(props.dob);
+  const gender = useFormInput(props.gender);
+  const phone = useFormInput(props.phone);
+  const password = useFormInput(props.password);
+  const email = useFormInput(props.email);
 
   return (
     <View style={styles.container}>
-      <TextBox placeholder="Nhập họ tên" />
-      <TextBox placeholder="Nhập địa chỉ nhà" />
-      <DateSelector />
+      <TextBox placeholder="Nhập họ tên" {...name} />
+      <TextBox placeholder="Nhập địa chỉ nhà" {...address} />
+      <DateSelector {...dob} />
       <Item
         style={{
           width: 300,
@@ -29,13 +37,18 @@ const EitUserInfoForm = props => {
           shadowRadius: 3.84,
           elevation: 5,
         }}>
-        <Picker mode="dropdown" iosIcon={<Icon name="arrow-down" />}>
-          <Picker.Item label="Nữ" value="f" />
-          <Picker.Item label="Nam" value="m" />
+        <Picker
+          mode="dropdown"
+          iosIcon={<Icon name="arrow-down" />}
+          selectedValue={gender.value}
+          onValueChange={value => gender.setValue(value)}>
+          <Picker.Item label="Nữ" value={0} />
+          <Picker.Item label="Nam" value={1} />
         </Picker>
       </Item>
-      <TextBox type={EMAIL} />
-      <TextBox type={PHONE} />
+      <TextBox type={EMAIL} {...email} />
+      <TextBox type={PHONE} {...phone} />
+      <TextBox type={PASSWORD} {...password} />
       <ButtonGreen
         text="Thay đổi thông tin cá nhân"
         onPress={props.activeView}

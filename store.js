@@ -3,6 +3,7 @@ import {createStore} from 'react-hooks-global-state';
 import reducer from './src/reducers';
 
 const initialState = {
+  configs: {alert: null, fcm: null},
   headers: {title: 'Balance App 1'},
 };
 

@@ -5,12 +5,15 @@ const DateSelector = props => (
   <DatePicker
     style={{width: 300}}
     showIcon={false}
-    date={'01-11-2020'}
+    date={props.value}
+    onDateChange={date => {
+      props.setValue(date);
+    }}
     mode="date"
     placeholder="chọn ngày sinh"
     format="DD-MM-YYYY"
-    minDate="1970-01-01"
-    maxDate="2050-01-01"
+    minDate="01-01-1970"
+    maxDate="01-01-2050"
     customStyles={{
       dateInput: {
         backgroundColor: '#FFFFFF',

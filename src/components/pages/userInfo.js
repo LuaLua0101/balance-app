@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import {Logo, ButtonGreenCenter} from '../atoms';
 import {Icon, Content, Spinner, Card, CardItem} from 'native-base';
 import MainHeader from '../../../menu';
 import {UserInfoTab} from '../organisms';
 import {EditUserInfoForm} from '../templates';
+import axios from '../../utilities/axios';
 
 const VIEW = 0;
 const EDIT = 1;
@@ -12,6 +13,11 @@ const LOADING = 2;
 
 const UserInfo = props => {
   const [order, setOrder] = useState(VIEW);
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    axios.get('getPersonalInfo').then(res => setData(res.data));
+  }, []);
 
   const activeLoading = () => {
     setOrder(LOADING);
@@ -41,14 +47,15 @@ const UserInfo = props => {
             }}
           />
           <View style={styles.body}>
-            {order === EDIT ? (
+            {data && order === EDIT ? (
               <View style={{marginTop: 40}}>
                 <EditUserInfoForm
                   activeLoading={activeLoading}
                   activeView={activeView}
+                  {...data}
                 />
               </View>
-            ) : order === VIEW ? (
+            ) : data && order === VIEW ? (
               <>
                 <Card
                   style={{
@@ -59,14 +66,24 @@ const UserInfo = props => {
                   }}>
                   <CardItem>
                     <View style={styles.bodyContent}>
-                      <Text style={styles.name}>Họ tên </Text>
+                      <Text style={styles.name}>{data.name}</Text>
                       <Text>
                         <Icon
                           type="AntDesign"
                           name="user"
                           style={styles.icon}
                         />
-                        <Text style={styles.info}> Nữ / 26 tuổi</Text>
+                        <Text style={styles.info}>
+                          {data.gender === 0 ? 'Nữ' : 'Nam'}
+                        </Text>
+                      </Text>
+                      <Text>
+                        <Icon
+                          type="AntDesign"
+                          name="user"
+                          style={styles.icon}
+                        />
+                        <Text style={styles.info}> Ngày sinh: {data.dob}</Text>
                       </Text>
                       <Text>
                         <Icon
@@ -74,7 +91,7 @@ const UserInfo = props => {
                           name="home"
                           style={styles.icon}
                         />
-                        <Text style={styles.info}> Địa chỉ nhà</Text>
+                        <Text style={styles.info}>Địa chỉ: {data.address}</Text>
                       </Text>
                       <Text>
                         <Icon
@@ -82,7 +99,7 @@ const UserInfo = props => {
                           name="mail"
                           style={styles.icon}
                         />
-                        <Text style={styles.info}> Email</Text>
+                        <Text style={styles.info}> Email: {data.email}</Text>
                       </Text>
                       <Text>
                         <Icon
@@ -90,7 +107,7 @@ const UserInfo = props => {
                           name="phone"
                           style={styles.icon}
                         />
-                        <Text style={styles.info}> Số điện thoại</Text>
+                        <Text style={styles.info}> SĐT: {data.phone}</Text>
                       </Text>
                     </View>
                   </CardItem>
