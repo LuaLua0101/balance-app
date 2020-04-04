@@ -66,7 +66,7 @@ const SignInForm = props => {
         }
       })
       .catch(err =>
-        configs.alert.alertWithType('error', 'Đăng nhập thất bại', ''),
+        configs.alert.alertWithType('error', 'Đăng nhập thất bại', err),
       );
   };
 
