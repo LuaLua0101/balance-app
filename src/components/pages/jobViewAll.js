@@ -1,31 +1,38 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import MainHeader from '../../../menu';
-import {
-  Content,
-  Card,
-  CardItem,
-  Thumbnail,
-  Text,
-  Button,
-  Icon,
-  Left,
-  Body,
-  Right,
-} from 'native-base';
-import {Image} from 'react-native';
+import {Content, Spinner} from 'native-base';
 import {MenuTab, SearchBar, JobCard} from '../organisms';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import axios from '../../utilities/axios';
 
 const JobViewAll = props => {
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    axios
+      .get('getJobs')
+      .then(res => {
+        if (res.status === 200) {
+          console.log(res.data.data);
+          setData(res.data.data);
+        }
+      })
+      .catch(err => console.log(err));
+  }, []);
+
   return (
     <MainHeader>
       <MenuTab job />
       <SearchBar />
       <Content padder>
-        <JobCard />
-        <JobCard />
-        <JobCard />
-        <JobCard />
+        <Content padder>
+          {data ? (
+            data.map((item, index) => {
+              return <JobCard key={index} {...item} />;
+            })
+          ) : (
+            <Spinner />
+          )}
+        </Content>
       </Content>
     </MainHeader>
   );

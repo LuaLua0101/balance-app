@@ -1,9 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View} from 'react-native';
 import {Logo} from '../atoms';
 import {SignInForm} from '../templates';
+import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const Login = props => {
+  const navigation = useNavigation();
+
+  const getData = async () => {
+    const value = await AsyncStorage.getItem('@token');
+    if (value !== null) {
+      navigation.navigate('Main');
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <>
       <Logo

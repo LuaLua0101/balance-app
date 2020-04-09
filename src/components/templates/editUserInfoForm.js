@@ -1,26 +1,54 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {TextBox, DateSelector, ButtonGreen} from '../atoms';
 import {EMAIL, PHONE, PASSWORD} from '../../utilities/constants';
 import {useNavigation} from '@react-navigation/native';
-import {Icon, Item, Picker} from 'native-base';
+import {Icon, Item, Picker, Spinner} from 'native-base';
 import useFormInput from '../../utilities/useFormInput';
+import axios from '../../utilities/axios';
+import moment from 'moment';
 
 const EitUserInfoForm = props => {
   const navigation = useNavigation();
+  const [updating, setUdating] = useState(false);
   const name = useFormInput(props.name);
   const address = useFormInput(props.address);
-  const dob = useFormInput(props.dob);
+  // const dob = useFormInput(props.dob);
   const gender = useFormInput(props.gender);
   const phone = useFormInput(props.phone);
-  const password = useFormInput(props.password);
   const email = useFormInput(props.email);
+
+  const update = () => {
+    axios
+      .post('updatePersonalInfo', {
+        name: name.value,
+        gender: gender.value,
+        address: address.value,
+        // dob: moment(dob.value, 'YYYY-MM-DD'),
+        phone: phone.value,
+        email: email.value,
+      })
+      .then(res => {
+        console.log(res);
+        if (res.status === 200) {
+          props.updateData({
+            name: name.value,
+            gender: gender.value,
+            address: address.value,
+            phone: phone.value,
+            email: email.value,
+          });
+          props.activeView();
+        }
+      })
+      .catch(err => console.log(err));
+  };
 
   return (
     <View style={styles.container}>
       <TextBox placeholder="Nhập họ tên" {...name} />
       <TextBox placeholder="Nhập địa chỉ nhà" {...address} />
-      <DateSelector {...dob} />
+      {/* <DateSelector {...dob} /> */}
       <Item
         style={{
           width: 300,
@@ -48,11 +76,11 @@ const EitUserInfoForm = props => {
       </Item>
       <TextBox type={EMAIL} {...email} />
       <TextBox type={PHONE} {...phone} />
-      <TextBox type={PASSWORD} {...password} />
-      <ButtonGreen
-        text="Thay đổi thông tin cá nhân"
-        onPress={props.activeView}
-      />
+      {updating ? (
+        <Spinner />
+      ) : (
+        <ButtonGreen text="Thay đổi thông tin cá nhân" onPress={update} />
+      )}
     </View>
   );
 };

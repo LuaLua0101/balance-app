@@ -1,13 +1,41 @@
-import React, {useState} from 'react';
-import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
-import {Footer, FooterTab, Button} from 'native-base';
+import React, {useState, useEffect} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
+  Dimensions,
+  WebView,
+  Linking,
+} from 'react-native';
+import {Footer, FooterTab, Button, Spinner} from 'native-base';
 import MainHeader from '../../../menu';
 import {MenuTab, Syllabus, CourseRating, CommentList} from '../organisms';
 import {Rating} from 'react-native-ratings';
 import {Col, Grid} from 'react-native-easy-grid';
+import axios from '../../utilities/axios';
+import {useRoute} from '@react-navigation/native';
+import {toCurrency} from '../../utilities/regex';
+import HTML from 'react-native-render-html';
+import * as cnt from '../../utilities/constants';
 
 const CourseDetail = props => {
   const [modalRating, setModalRating] = useState(false);
+  const [data, setData] = useState();
+  const route = useRoute();
+
+  useEffect(() => {
+    axios
+      .get('getCourseDetail/' + route.params.id)
+      .then(res => {
+        if (res.status === 200) {
+          console.log(res);
+          setData(res.data.data);
+        }
+      })
+      .catch(err => console.log(err));
+  }, []);
 
   const openModalRating = () => {
     setModalRating(true);
@@ -20,73 +48,88 @@ const CourseDetail = props => {
   return (
     <>
       <MainHeader>
-        <MenuTab course />
-        <ScrollView>
-          <CourseRating
-            modal={modalRating}
-            openModal={openModalRating}
-            closeModal={closeModalRating}
-          />
-          <View style={styles.container}>
-            <View style={styles.header}>
-              <Text style={styles.headerTitle}>
-                Khoá học lập trình PHP nâng cao
-              </Text>
-            </View>
-            <View style={styles.postContent}>
-              <Text style={styles.postTitle}>Thông tin về khóa học</Text>
+        {data ? (
+          <>
+            <MenuTab course />
+            <ScrollView>
+              <CourseRating
+                modal={modalRating}
+                openModal={openModalRating}
+                closeModal={closeModalRating}
+              />
+              <View style={styles.container}>
+                <View style={styles.header}>
+                  <Text style={styles.headerTitle}>{data.title}</Text>
+                </View>
+                <View style={styles.postContent}>
+                  <Text style={styles.postTitle}>Thông tin về khóa học</Text>
 
-              <Text style={styles.postDescription}>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                penatibus et magnis dis parturient montes, nascetur ridiculus
-                mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                quis, sem. Nulla consequat massa quis enim.
-              </Text>
+                  <HTML
+                    html={data.description}
+                    imagesMaxWidth={Dimensions.get('window').width}
+                  />
 
-              <Text style={styles.tags}>600,000 vnđ</Text>
-              <Grid>
-                <Col size={15}>
-                  <Rating startingValue={5} imageSize={25} readonly />
-                </Col>
-                <Col size={25}>
-                  <Text>400 đánh giá</Text>
-                </Col>
-              </Grid>
-              {/* <Text style={styles.date}>2017-11-27 13:03:01</Text> */}
-              <Text style={styles.date}>2000 lượt đăng ký</Text>
+                  <Text style={styles.tags}>{toCurrency(data.price)} vnđ</Text>
+                  <Grid>
+                    <Col size={15}>
+                      <Rating startingValue={5} imageSize={25} readonly />
+                    </Col>
+                    <Col size={25}>
+                      <Text>{data.review_count} đánh giá</Text>
+                    </Col>
+                  </Grid>
+                  {/* <Text style={styles.date}>2017-11-27 13:03:01</Text> */}
+                  <Text style={styles.date}>{data.buy_count} lượt mua</Text>
 
-              <View style={styles.profile}>
-                <Image
-                  style={styles.avatar}
-                  source={{
-                    uri: 'https://bootdey.com/img/Content/avatar/avatar1.png',
-                  }}
-                />
-                <Text style={styles.name}>Nguyễn Anh Duy</Text>
+                  <View style={styles.profile}>
+                    {data['author'] && (
+                      <Image
+                        style={styles.avatar}
+                        source={{
+                          uri:
+                            cnt.API_URL +
+                            'public/admins/img/authors' +
+                            '/' +
+                            data['author'].avatar,
+                        }}
+                      />
+                    )}
+                    <Text style={styles.name}>
+                      {data['author'] && data['author'].name}
+                    </Text>
+                  </View>
+                </View>
+                {/* <Syllabus style={{alignItems: 'center'}} /> */}
               </View>
-            </View>
-            <Syllabus style={{alignItems: 'center'}} />
-          </View>
-          <View style={styles.container}>
-            <View style={styles.header2}>
-              <Text style={styles.headerTitle}>Đánh giá khóa học</Text>
-            </View>
-            <CommentList />
-          </View>
-        </ScrollView>
-        <Footer style={{height: 40}}>
-          <FooterTab>
-            <Button
-              style={{height: 40, backgroundColor: '#4dc4ff'}}
-              onPress={openModalRating}>
-              <Text>Đánh giá</Text>
-            </Button>
-            <Button style={{height: 40, backgroundColor: '#8bc94d'}}>
-              <Text>Đăng ký học</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
+              <View style={styles.container}>
+                <View style={styles.header2}>
+                  <Text style={styles.headerTitle}>Đánh giá khóa học</Text>
+                </View>
+                <CommentList />
+              </View>
+            </ScrollView>
+            <Footer style={{height: 40}}>
+              <FooterTab>
+                <Button
+                  style={{height: 40, backgroundColor: '#4dc4ff'}}
+                  onPress={openModalRating}>
+                  <Text>Đánh giá</Text>
+                </Button>
+                <Button
+                  style={{height: 40, backgroundColor: '#8bc94d'}}
+                  onPress={() =>
+                    Linking.openURL(data.url).catch(err =>
+                      console.error('An error occurred', err),
+                    )
+                  }>
+                  <Text>Đăng ký học</Text>
+                </Button>
+              </FooterTab>
+            </Footer>
+          </>
+        ) : (
+          <Spinner />
+        )}
       </MainHeader>
     </>
   );

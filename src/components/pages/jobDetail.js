@@ -1,18 +1,12 @@
-import React, {useState} from 'react';
-import {StyleSheet, Text, View, Image, TextInput} from 'react-native';
-import {Logo, ButtonGreenCenter, ButtonShowMore} from '../atoms';
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, Text, View, Image, Dimensions} from 'react-native';
+import {Logo} from '../atoms';
 import {
-  Icon,
   Content,
-  Form,
-  Item,
-  Picker,
-  Spinner,
   Card,
   CardItem,
   H3,
   Body,
-  List,
   ListItem,
   Thumbnail,
   Left,
@@ -21,254 +15,294 @@ import {
   Button,
 } from 'native-base';
 import MainHeader from '../../../menu';
-import {UserInfoTab, MenuTab} from '../organisms';
-import DatePicker from 'react-native-datepicker';
-import {EditUserInfoForm} from '../templates';
+import {MenuTab} from '../organisms';
 import {Col, Grid} from 'react-native-easy-grid';
+import axios from '../../utilities/axios';
+import {useRoute} from '@react-navigation/native';
+import * as cnt from '../../utilities/constants';
+import HTML from 'react-native-render-html';
 
 const JobDetail = props => {
+  const route = useRoute();
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    axios
+      .get('getJobDetail/' + route.params.id)
+      .then(res => {
+        if (res.status === 200) {
+          console.log(res.data.data);
+          setData(res.data.data);
+        }
+      })
+      .catch(err => console.log(err));
+  }, []);
+
   return (
     <MainHeader>
       <MenuTab job />
-      <Content padder>
-        <View style={styles.container}>
-          <Logo
-            source={require('../../../assets/logo.png')}
-            style={{height: 200}}
-          />
-          <Image
-            style={styles.avatar}
-            source={{
-              uri: 'https://bootdey.com/img/Content/avatar/avatar6.png',
-            }}
-          />
-          <View style={styles.body}>
-            <Card
-              style={{
-                marginTop: 30,
-                width: '95%',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-              }}>
-              <CardItem>
-                <View style={styles.bodyContent}>
-                  <Text style={styles.name}>công ty Balance</Text>
-                  <ButtonShowMore text="Theo dõi" />
-                </View>
-              </CardItem>
-            </Card>
-            <Card
-              style={{
-                width: '95%',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-              }}>
-              <CardItem>
-                <View style={styles.bodyContent}>
-                  <H3>Nhân viên tư vấn chăm sóc khách hàng</H3>
-                  <Text>2000 lượt ứng tuyển</Text>
-                  <Text>
-                    dòng giới thiệu 3 dòng giới thiệu 3dòng giới thiệu 3dòng
-                    giới thiệu 3dòng giới thiệu 3dòng giới thiệu 3dòng giới
-                    thiệu 3
-                  </Text>
-                </View>
-              </CardItem>
-            </Card>
-            <Card
-              style={{
-                width: '95%',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-              }}>
-              <CardItem>
-                <Content>
-                  <ListItem thumbnail>
-                    <Left>
-                      <Thumbnail
-                        square
-                        source={require('../../../assets/bachelor.png')}
-                      />
-                    </Left>
-                    <Body>
-                      <Text>Mức lương</Text>
-                      <Text note numberOfLines={1}>
-                        Its time to build a difference . .
-                      </Text>
-                    </Body>
-                  </ListItem>
-                </Content>
-              </CardItem>
-            </Card>
-            <Card
-              style={{
-                width: '95%',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-              }}>
-              <CardItem>
-                <Content>
-                  <ListItem thumbnail>
-                    <Left>
-                      <Thumbnail
-                        square
-                        source={require('../../../assets/bachelor.png')}
-                      />
-                    </Left>
-                    <Body>
-                      <Text>Yêu cầu bằng cấp</Text>
-                      <Text note numberOfLines={1}>
-                        Its time to build a difference . .
-                      </Text>
-                    </Body>
-                  </ListItem>
-                </Content>
-              </CardItem>
-            </Card>
-            <Card
-              style={{
-                width: '95%',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-              }}>
-              <CardItem>
-                <Content>
-                  <ListItem thumbnail>
-                    <Left>
-                      <Thumbnail
-                        square
-                        source={require('../../../assets/bachelor.png')}
-                      />
-                    </Left>
-                    <Body>
-                      <Text>Tính chất công việc</Text>
-                      <Text note numberOfLines={1}>
-                        Its time to build a difference . .
-                      </Text>
-                    </Body>
-                  </ListItem>
-                </Content>
-              </CardItem>
-            </Card>
-            <Card
-              style={{
-                width: '95%',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-              }}>
-              <CardItem>
-                <Content>
-                  <ListItem thumbnail>
-                    <Left>
-                      <Thumbnail
-                        square
-                        source={require('../../../assets/bachelor.png')}
-                      />
-                    </Left>
-                    <Body>
-                      <Text>Địa chỉ</Text>
-                      <Text note numberOfLines={3}>
-                        Its time to build a difference . .
-                      </Text>
-                    </Body>
-                  </ListItem>
-                </Content>
-              </CardItem>
-            </Card>
-            <Card
-              style={{
-                width: '95%',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-              }}>
-              <CardItem>
-                <Content>
-                  <ListItem thumbnail>
-                    <Left>
-                      <Thumbnail
-                        square
-                        source={require('../../../assets/bachelor.png')}
-                      />
-                    </Left>
-                    <Body>
-                      <Text>Kỹ năng chuyên môn yêu cầu</Text>
-                      <Text note numberOfLines={3}>
-                        Its time to build a difference . .
-                      </Text>
-                    </Body>
-                  </ListItem>
-                </Content>
-              </CardItem>
-            </Card>
-            <Grid
-              style={{
-                width: '95%',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-              }}>
-              <Col size={50}>
-                <Card>
-                  <CardItem bordered>
-                    <Text>Quyền lợi</Text>
-                  </CardItem>
+      {data && (
+        <>
+          <Content padder>
+            <View style={styles.container}>
+              <Logo
+                source={{
+                  uri:
+                    cnt.API_URL + 'public/admins/img/jobs' + '/' + data.cover,
+                }}
+                style={{height: 200}}
+              />
+              {data['company'] && (
+                <Image
+                  style={styles.avatar}
+                  source={{
+                    uri:
+                      cnt.API_URL +
+                      'public/admins/img/companies' +
+                      '/' +
+                      data['company'].logo,
+                  }}
+                />
+              )}
+              <View style={styles.body}>
+                <Card
+                  style={{
+                    marginTop: 30,
+                    width: '95%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  }}>
                   <CardItem>
-                    <Body>
-                      <Text>//Your text here</Text>
-                    </Body>
+                    <View style={styles.bodyContent}>
+                      <Text style={styles.name}>
+                        {data['company'] && data['company'].name}
+                      </Text>
+                      {/* <ButtonShowMore text="Theo dõi" /> */}
+                    </View>
                   </CardItem>
                 </Card>
-              </Col>
-              <Col size={50}>
-                <Card>
-                  <CardItem bordered>
-                    <Text>Yêu cầu công việc</Text>
-                  </CardItem>
+                <Card
+                  style={{
+                    width: '95%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  }}>
                   <CardItem>
-                    <Body>
-                      <Text>//Your text here</Text>
-                    </Body>
+                    <View style={styles.bodyContent}>
+                      <H3>{data.title}</H3>
+                      <Text>{data.apply_count} lượt ứng tuyển</Text>
+                      <HTML
+                        html={data.description}
+                        imagesMaxWidth={Dimensions.get('window').width}
+                      />
+                    </View>
                   </CardItem>
                 </Card>
-              </Col>
-            </Grid>
-            <Card
-              style={{
-                width: '95%',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-              }}>
-              <CardItem>
-                <Content>
-                  <ListItem thumbnail>
-                    <Left>
-                      <Thumbnail
-                        square
-                        source={require('../../../assets/bachelor.png')}
-                      />
-                    </Left>
-                    <Body>
-                      <Text>Hạn nộp hồ sơ</Text>
-                      <Text note numberOfLines={3}>
-                        Its time to build a difference . .
-                      </Text>
-                    </Body>
-                  </ListItem>
-                </Content>
-              </CardItem>
-            </Card>
-          </View>
-        </View>
-      </Content>
-      <Footer style={{height: 40}}>
-        <FooterTab>
-          <Button style={{height: 40, backgroundColor: '#4dc4ff'}}>
-            <Text>Lưu lại</Text>
-          </Button>
-          <Button style={{height: 40, backgroundColor: '#8bc94d'}}>
-            <Text>Ứng tuyển</Text>
-          </Button>
-        </FooterTab>
-      </Footer>
+                <Card
+                  style={{
+                    width: '95%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  }}>
+                  <CardItem>
+                    <Content>
+                      <ListItem thumbnail>
+                        <Left>
+                          <Thumbnail
+                            square
+                            source={require('../../../assets/bachelor.png')}
+                          />
+                        </Left>
+                        <Body>
+                          <Text>Mức lương</Text>
+                          <Text note numberOfLines={1}>
+                            {data.salary_from + ' - ' + data.salary_to}
+                          </Text>
+                        </Body>
+                      </ListItem>
+                    </Content>
+                  </CardItem>
+                </Card>
+                <Card
+                  style={{
+                    width: '95%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  }}>
+                  <CardItem>
+                    <Content>
+                      <ListItem thumbnail>
+                        <Left>
+                          <Thumbnail
+                            square
+                            source={require('../../../assets/bachelor.png')}
+                          />
+                        </Left>
+                        <Body>
+                          <Text>Yêu cầu bằng cấp</Text>
+                          <Text note numberOfLines={1}>
+                            {data['degree'] && data['degree'].name}
+                          </Text>
+                        </Body>
+                      </ListItem>
+                    </Content>
+                  </CardItem>
+                </Card>
+                <Card
+                  style={{
+                    width: '95%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  }}>
+                  <CardItem>
+                    <Content>
+                      <ListItem thumbnail>
+                        <Left>
+                          <Thumbnail
+                            square
+                            source={require('../../../assets/bachelor.png')}
+                          />
+                        </Left>
+                        <Body>
+                          <Text>Tính chất công việc</Text>
+                          <Text note numberOfLines={1}>
+                            {data.job_type == 0
+                              ? 'Toàn thời gian'
+                              : 'Bán thời gian'}
+                          </Text>
+                        </Body>
+                      </ListItem>
+                    </Content>
+                  </CardItem>
+                </Card>
+                {/* <Card
+                  style={{
+                    width: '95%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  }}>
+                  <CardItem>
+                    <Content>
+                      <ListItem thumbnail>
+                        <Left>
+                          <Thumbnail
+                            square
+                            source={require('../../../assets/bachelor.png')}
+                          />
+                        </Left>
+                        <Body>
+                          <Text>Địa chỉ</Text>
+                          <Text note numberOfLines={3}>
+                            {data.requirements}
+                          </Text>
+                        </Body>
+                      </ListItem>
+                    </Content>
+                  </CardItem>
+                </Card> */}
+                <Card
+                  style={{
+                    width: '95%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  }}>
+                  <CardItem>
+                    <Content>
+                      <ListItem thumbnail>
+                        <Left>
+                          <Thumbnail
+                            square
+                            source={require('../../../assets/bachelor.png')}
+                          />
+                        </Left>
+                        <Body>
+                          <Text>Kỹ năng chuyên môn yêu cầu</Text>
+                          <HTML
+                            html={data.requirements}
+                            imagesMaxWidth={Dimensions.get('window').width}
+                          />
+                        </Body>
+                      </ListItem>
+                    </Content>
+                  </CardItem>
+                </Card>
+                <Grid
+                  style={{
+                    width: '95%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  }}>
+                  <Col size={50}>
+                    <Card>
+                      <CardItem bordered>
+                        <Text>Quyền lợi</Text>
+                      </CardItem>
+                      <CardItem>
+                        <Body>
+                          <HTML
+                            html={data.benefits}
+                            imagesMaxWidth={Dimensions.get('window').width}
+                          />
+                        </Body>
+                      </CardItem>
+                    </Card>
+                  </Col>
+                  <Col size={50}>
+                    <Card>
+                      <CardItem bordered>
+                        <Text>Yêu cầu công việc</Text>
+                      </CardItem>
+                      <CardItem>
+                        <Body>
+                          <HTML
+                            html={data.requirements}
+                            imagesMaxWidth={Dimensions.get('window').width}
+                          />
+                        </Body>
+                      </CardItem>
+                    </Card>
+                  </Col>
+                </Grid>
+                <Card
+                  style={{
+                    width: '95%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  }}>
+                  <CardItem>
+                    <Content>
+                      <ListItem thumbnail>
+                        <Left>
+                          <Thumbnail
+                            square
+                            source={require('../../../assets/bachelor.png')}
+                          />
+                        </Left>
+                        <Body>
+                          <Text>Hạn nộp hồ sơ</Text>
+                          <Text note numberOfLines={3}>
+                            Ngày {data.end_date}
+                          </Text>
+                        </Body>
+                      </ListItem>
+                    </Content>
+                  </CardItem>
+                </Card>
+              </View>
+            </View>
+          </Content>
+          <Footer style={{height: 40}}>
+            <FooterTab>
+              <Button style={{height: 40, backgroundColor: '#4dc4ff'}}>
+                <Text>Lưu lại</Text>
+              </Button>
+              <Button style={{height: 40, backgroundColor: '#8bc94d'}}>
+                <Text>Ứng tuyển</Text>
+              </Button>
+            </FooterTab>
+          </Footer>
+        </>
+      )}
     </MainHeader>
   );
 };

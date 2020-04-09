@@ -6,6 +6,7 @@ import MainHeader from '../../../menu';
 import {UserInfoTab} from '../organisms';
 import {EditUserInfoForm} from '../templates';
 import axios from '../../utilities/axios';
+import * as cnt from '../../utilities/constants';
 
 const VIEW = 0;
 const EDIT = 1;
@@ -34,95 +35,110 @@ const UserInfo = props => {
   return (
     <MainHeader>
       <UserInfoTab one />
-      <Content padder>
-        <View style={styles.container}>
-          <Logo
-            source={require('../../../assets/logo.png')}
-            style={{height: 200}}
-          />
-          <Image
-            style={styles.avatar}
-            source={{
-              uri: 'https://bootdey.com/img/Content/avatar/avatar6.png',
-            }}
-          />
-          <View style={styles.body}>
-            {data && order === EDIT ? (
-              <View style={{marginTop: 40}}>
-                <EditUserInfoForm
-                  activeLoading={activeLoading}
-                  activeView={activeView}
-                  {...data}
-                />
-              </View>
-            ) : data && order === VIEW ? (
-              <>
-                <Card
-                  style={{
-                    marginTop: 30,
-                    width: '80%',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                  }}>
-                  <CardItem>
-                    <View style={styles.bodyContent}>
-                      <Text style={styles.name}>{data.name}</Text>
-                      <Text>
-                        <Icon
-                          type="AntDesign"
-                          name="user"
-                          style={styles.icon}
-                        />
-                        <Text style={styles.info}>
-                          {data.gender === 0 ? 'Nữ' : 'Nam'}
+      {data && (
+        <Content padder>
+          <View style={styles.container}>
+            <Logo
+              source={require('../../../assets/logo.png')}
+              style={{height: 200}}
+            />
+            <Image
+              style={styles.avatar}
+              source={{
+                uri:
+                  cnt.API_URL + 'public/admins/img/users' + '/' + data.avatar,
+              }}
+            />
+            <View style={styles.body}>
+              {data && order === EDIT ? (
+                <View style={{marginTop: 40}}>
+                  <EditUserInfoForm
+                    activeLoading={activeLoading}
+                    activeView={activeView}
+                    {...data}
+                    updateData={newData =>
+                      setData({
+                        ...data,
+                        name: newData.name,
+                        gender: newData.gender,
+                        address: newData.address,
+                        phone: newData.phone,
+                        email: newData.email,
+                      })
+                    }
+                  />
+                </View>
+              ) : data && order === VIEW ? (
+                <>
+                  <Card
+                    style={{
+                      marginTop: 30,
+                      width: '80%',
+                      marginLeft: 'auto',
+                      marginRight: 'auto',
+                    }}>
+                    <CardItem>
+                      <View style={styles.bodyContent}>
+                        <Text style={styles.name}>{data.name}</Text>
+                        <Text>
+                          <Icon
+                            type="AntDesign"
+                            name="user"
+                            style={styles.icon}
+                          />
+                          <Text style={styles.info}>
+                            {data.gender === 0 ? 'Nữ' : 'Nam'}
+                          </Text>
                         </Text>
-                      </Text>
-                      <Text>
-                        <Icon
-                          type="AntDesign"
-                          name="user"
-                          style={styles.icon}
-                        />
-                        <Text style={styles.info}> Ngày sinh: {data.dob}</Text>
-                      </Text>
-                      <Text>
-                        <Icon
-                          type="AntDesign"
-                          name="home"
-                          style={styles.icon}
-                        />
-                        <Text style={styles.info}>Địa chỉ: {data.address}</Text>
-                      </Text>
-                      <Text>
-                        <Icon
-                          type="AntDesign"
-                          name="mail"
-                          style={styles.icon}
-                        />
-                        <Text style={styles.info}> Email: {data.email}</Text>
-                      </Text>
-                      <Text>
-                        <Icon
-                          type="AntDesign"
-                          name="phone"
-                          style={styles.icon}
-                        />
-                        <Text style={styles.info}> SĐT: {data.phone}</Text>
-                      </Text>
-                    </View>
-                  </CardItem>
-                </Card>
-                <ButtonGreenCenter
-                  text="Sửa thông tin cá nhân"
-                  onPress={activeEdit}
-                />
-              </>
-            ) : (
-              <Spinner />
-            )}
+                        <Text>
+                          <Icon
+                            type="AntDesign"
+                            name="user"
+                            style={styles.icon}
+                          />
+                          <Text style={styles.info}>Ngày sinh: {data.dob}</Text>
+                        </Text>
+                        <Text>
+                          <Icon
+                            type="AntDesign"
+                            name="home"
+                            style={styles.icon}
+                          />
+                          <Text style={styles.info}>
+                            Địa chỉ: {data.address}
+                          </Text>
+                        </Text>
+                        <Text>
+                          <Icon
+                            type="AntDesign"
+                            name="mail"
+                            style={styles.icon}
+                          />
+                          <Text style={styles.info}> Email: {data.email}</Text>
+                        </Text>
+                        <Text>
+                          <Icon
+                            type="AntDesign"
+                            name="phone"
+                            style={styles.icon}
+                          />
+                          <Text style={styles.info}> SĐT: {data.phone}</Text>
+                        </Text>
+                      </View>
+                    </CardItem>
+                  </Card>
+                  <ButtonGreenCenter
+                    text="Sửa thông tin cá nhân"
+                    onPress={activeEdit}
+                  />
+                </>
+              ) : (
+                <Spinner />
+              )}
+            </View>
           </View>
-        </View>
-      </Content>
+        </Content>
+      )}
     </MainHeader>
   );
 };

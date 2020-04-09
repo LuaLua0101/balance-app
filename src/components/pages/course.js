@@ -32,17 +32,22 @@ const Course = props => {
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
-              <Text>dòng giới thiệu 1</Text>
-              <Text>dòng giới thiệu 2</Text>
-              <Text>dòng giới thiệu 3</Text>
+              <Text>
+                Khát vọng Tăng thu nhập của người Việt trong top đầu các nước
+                ASEAN
+              </Text>
+              <Text>
+                Phát triển con người, Phát triển doanh nghiệp, Phát triển đất
+                nước
+              </Text>
             </Body>
           </CardItem>
         </CustomCard>
         <SimpleBlock type={cnt.CHUDEKHOAHOC} more={toViewAll} />
-        <SimpleBlock type={cnt.KYNANGMEMHOT} more={toViewAll} />
-        <SimpleBlock type={cnt.KHQUANLY} more={toViewAll} />
-        <SimpleBlock type={cnt.DNTHIEUBAN} more={toViewAll} />
-        <SimpleBlock type={cnt.HOCDELUONGCAO} more={toViewAll} />
+        <SimpleBlock type={cnt.KYNANGMEMHOT} more={toViewAll} page="courses" />
+        <SimpleBlock type={cnt.KHQUANLY} more={toViewAll} page="courses" />
+        <SimpleBlock type={cnt.DNTHIEUBAN} more={toViewAll} page="companies" />
+        <SimpleBlock type={cnt.HOCDELUONGCAO} more={toViewAll} page="courses" />
       </Content>
       <MenuTab course />
     </MainHeader>

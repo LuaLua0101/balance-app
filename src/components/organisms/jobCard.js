@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Card,
   CardItem,
@@ -8,58 +8,70 @@ import {
   Icon,
   Left,
   Body,
-  Right,
+  Spinner,
 } from 'native-base';
 import {Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
+import axios from '../../utilities/axios';
+import {toCurrency} from '../../utilities/regex';
+import * as cnt from '../../utilities/constants';
 
 const JobCard = props => {
   const navigation = useNavigation();
 
-  return (
-    <TouchableOpacity onPress={() => navigation.navigate('JobDetail')}>
+  return props ? (
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate('JobDetail', {
+          id: props.id,
+        })
+      }>
       <Card style={{flex: 0}}>
         <CardItem>
           <Left>
             <Thumbnail source={require('../../../assets/banlatrieuphu.jpg')} />
             <Body>
-              <Text>Nhân viên kinh doanh</Text>
-              <Text note>Hồ Chí Minh</Text>
+              <Text>{props.title}</Text>
+              <Text note>
+                {toCurrency(props.salary_from)}-{toCurrency(props.salary_to)}{' '}
+                vnđ
+              </Text>
             </Body>
           </Left>
         </CardItem>
         <CardItem bordered>
           <Body>
             <Image
-              source={require('../../../assets/thumbnailjob.jpg')}
+              source={{
+                uri: cnt.API_URL + 'public/admins/img/jobs' + '/' + props.cover,
+              }}
               style={{height: 100, width: '100%', flex: 1}}
             />
-            <Text>
-              Tìm kiếm khách hàng qua online hoặc trực tiếp Liên hệ khách hàng
-              hoặc trực tiếp gặp mặt...
-            </Text>
+            <Text note>{props.short_description}</Text>
           </Body>
         </CardItem>
         <CardItem footer bordered>
           <Left>
             <Button transparent>
-              <Icon type="MaterialIcons" name="attach-money" />
-              <Text>8-36 triệu</Text>
+              {/* <Icon type="MaterialIcons" name="attach-money" /> */}
+              {/* <Text>{props.province.name}</Text> */}
             </Button>
           </Left>
           <Body>
             <Button transparent>
-              <Icon active name="chatbubbles" />
-              <Text>2000 ứng tuyển</Text>
+              {/* <Icon active name="chatbubbles" /> */}
+              <Text>{props.apply_count} ứng tuyển</Text>
             </Button>
           </Body>
-          <Right>
+          {/* <Right>
             <Text>11 giờ trước</Text>
-          </Right>
+          </Right> */}
         </CardItem>
       </Card>
     </TouchableOpacity>
+  ) : (
+    <Spinner />
   );
 };
 

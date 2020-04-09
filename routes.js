@@ -44,6 +44,7 @@ const Routes = () => {
         <Stack.Screen name="CourseViewAll" component={CourseViewAll} />
         <Stack.Screen name="CourseDetail" component={CourseDetail} />
         <Stack.Screen name="TestViewAll" component={TestViewAll} />
+        {/* <Stack.Screen name="TestDetail" component={TestDetail} /> */}
         <Stack.Screen name="Bookmark" component={Bookmark} />
       </Stack.Navigator>
     </NavigationContainer>

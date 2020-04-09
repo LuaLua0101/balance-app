@@ -16,10 +16,14 @@ const TestEbook = props => {
       <MenuTab test />
       <SearchBar />
       <Content padder>
-        <SimpleBlock type={cnt.KHOAHOCTUYETVOI} more={toViewAll} />
-        <SimpleBlock type={cnt.VIECGANBAN} more={toViewAll} />
-        <SimpleBlock type={cnt.DNCANBAN} more={toViewAll} />
-        <SimpleBlock type={cnt.BANLAAI} more={toViewAll} />
+        <SimpleBlock
+          type={cnt.KHOAHOCTUYETVOI}
+          more={toViewAll}
+          page="courses"
+        />
+        <SimpleBlock type={cnt.VIECGANBAN} more={toViewAll} page="jobs" />
+        <SimpleBlock type={cnt.DNCANBAN} more={toViewAll} page="companies" />
+        <SimpleBlock type={cnt.TESTBANLAAI} more={toViewAll} page="tests" />
       </Content>
     </MainHeader>
   );

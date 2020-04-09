@@ -14,16 +14,16 @@ const CourseTab = props => {
 
   return (
     <CustomSegment>
-      <Button first onPress={() => navigation.navigate('Course')}>
+      <Button first onPress={() => navigation.navigate('CourseViewAll')}>
         <Text>Kỹ năng</Text>
       </Button>
-      <Button last onPress={() => navigation.navigate('Main')}>
+      <Button last onPress={() => navigation.navigate('CourseViewAll')}>
         <Text>Chức vụ</Text>
       </Button>
-      <Button last onPress={() => navigation.navigate('Main')}>
+      <Button last onPress={() => navigation.navigate('CourseViewAll')}>
         <Text>D.nghiệp</Text>
       </Button>
-      <Button last onPress={() => navigation.navigate('Main')}>
+      <Button last onPress={() => navigation.navigate('CourseViewAll')}>
         <Text>My course</Text>
       </Button>
     </CustomSegment>

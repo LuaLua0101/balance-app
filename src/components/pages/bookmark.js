@@ -7,7 +7,7 @@ const Bookmark = props => {
   return (
     <MainHeader>
       <Tabs>
-        <Tab
+        {/* <Tab
           heading={
             <TabHeading style={{backgroundColor: '#4dc4ff'}}>
               <Icon name="camera" />
@@ -15,7 +15,7 @@ const Bookmark = props => {
             </TabHeading>
           }>
           <SavedCourses />
-        </Tab>
+        </Tab> */}
         <Tab
           heading={
             <TabHeading style={{backgroundColor: '#4dc4ff'}}>

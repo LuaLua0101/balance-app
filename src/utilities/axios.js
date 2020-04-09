@@ -1,9 +1,8 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
+import * as cnt from './constants';
 
-const API_URL = 'http://139.180.195.15/api-komic/api';
-
-axios.defaults.baseURL = API_URL;
+axios.defaults.baseURL = cnt.API_URL + 'api';
 axios.defaults.headers.common.Accept = 'application/x-www-form-urlencoded';
 
 axios.interceptors.request.use(async function(config) {

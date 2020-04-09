@@ -13,20 +13,26 @@ import {
   Right,
 } from 'native-base';
 import {Image} from 'react-native';
-import {MenuTab, SearchBar} from '.';
+import * as cnt from '../../utilities/constants';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
+import {toCurrency} from '../../utilities/regex';
 
 const CourseCard = props => {
   const navigation = useNavigation();
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('CourseDetail')}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate('CourseDetail', {
+          id: props.id,
+        })
+      }>
       <Card style={{flex: 0}}>
         <CardItem>
           <Left>
             <Body>
-              <Text>Khóa học về lập trình PHP</Text>
+              <Text>{props.title}</Text>
               <Text note>Nguyễn Anh Duy</Text>
             </Body>
           </Left>
@@ -34,26 +40,25 @@ const CourseCard = props => {
         <CardItem bordered>
           <Body>
             <Image
-              source={require('../../../assets/thumbnailjob.jpg')}
+              source={{
+                uri: cnt.API_URL + 'public/admins/img/courses/' + props.cover,
+              }}
               style={{height: 100, width: '100%', flex: 1}}
             />
-            <Text>
-              Tìm kiếm khách hàng qua online hoặc trực tiếp Liên hệ khách hàng
-              hoặc trực tiếp gặp mặt...
-            </Text>
+            <Text>{props.short_description}...</Text>
           </Body>
         </CardItem>
         <CardItem footer bordered>
           <Left>
             <Button transparent>
               <Icon type="MaterialIcons" name="attach-money" />
-              <Text>200,000đ</Text>
+              <Text>{toCurrency(props.price)}</Text>
             </Button>
           </Left>
           <Body>
             <Button transparent>
               <Icon active name="chatbubbles" />
-              <Text>2000 người học</Text>
+              <Text>{props.buy_count} người học</Text>
             </Button>
           </Body>
         </CardItem>
