@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Card, CardItem, Body, Spinner} from 'native-base';
+import {Card, CardItem, Body, Spinner, Text} from 'native-base';
 import {ScrollView, TouchableOpacity} from 'react-native';
 import {Col, Grid} from 'react-native-easy-grid';
 import {Card as Card2, CardNoImage, GreenText, ButtonShowMore} from '../atoms';
@@ -16,6 +16,7 @@ const SimpleBlock = props => {
       .get(props.type)
       .then(res => {
         if (res.status === 200) {
+          console.log(res.data);
           setData(res.data);
         }
       })
@@ -48,17 +49,25 @@ const SimpleBlock = props => {
         shadowRadius: 12.35,
         elevation: 10,
       }}>
-      <CardItem header bordered>
+      <CardItem header>
         <Grid>
           <Col size={75}>
             <GreenText title>{data && data.title}</GreenText>
           </Col>
           <Col size={25}>
-            <ButtonShowMore text="Xem thêm" onPress={more} />
+            <TouchableOpacity onPress={more}>
+              <Text
+                style={{
+                  fontSize: 14,
+                  textDecorationLine: 'underline',
+                }}>
+                Xem thêm>>
+              </Text>
+            </TouchableOpacity>
           </Col>
         </Grid>
       </CardItem>
-      <CardItem bordered>
+      <CardItem>
         <Body>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {data.data &&

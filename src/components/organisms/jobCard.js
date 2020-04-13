@@ -40,7 +40,7 @@ const JobCard = props => {
             </Body>
           </Left>
         </CardItem>
-        <CardItem bordered>
+        <CardItem>
           <Body>
             <Image
               source={{
@@ -51,7 +51,7 @@ const JobCard = props => {
             <Text note>{props.short_description}</Text>
           </Body>
         </CardItem>
-        <CardItem footer bordered>
+        <CardItem footer>
           <Left>
             <Button transparent>
               {/* <Icon type="MaterialIcons" name="attach-money" /> */}

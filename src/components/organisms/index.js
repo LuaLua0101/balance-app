@@ -10,3 +10,5 @@ export {default as CourseRating} from './courseRating';
 export {default as CommentList} from './commentList';
 export {default as TestCard} from './testCard';
 export {default as BookmarkTab} from './bookmarkTab';
+export {default as PinnedJobCard} from './pinnedJobCard';
+export {default as PinnedTestCard} from './pinnedTestCard';

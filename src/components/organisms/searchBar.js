@@ -1,58 +1,35 @@
-import React from 'react';
-import {Container, Header, Item, Input, Icon, Button, Text} from 'native-base';
-import styled from 'styled-components';
-import {DarkText} from '../atoms';
-import {TouchableOpacity, Image} from 'react-native';
+import * as React from 'react';
+import {Searchbar} from 'react-native-paper';
+import {View} from 'native-base';
 
-const CustomHeader = styled(Header)`
-  background-color: ${props => props.theme.mainColor};
-`;
+export default class MyComponent extends React.Component {
+  state = {
+    searchQuery: '',
+  };
 
-const SearchBar = props => {
-  return (
-    <CustomHeader
-      searchBar
-      style={{
-        height: 45,
-      }}>
-      <Item
+  _onChangeSearch = query => this.setState({searchQuery: query});
+
+  render() {
+    const {searchQuery} = this.state;
+    return (
+      <View
         style={{
-          borderRadius: 40,
-          height: 30,
+          paddingLeft: 20,
+          paddingRight: 20,
+          paddingBottom: 5,
+          paddingTop: 5,
+          backgroundColor: '#4dc4ff',
         }}>
-        <Icon name="ios-search" />
-        <Input
-          placeholder="Nhập từ khóa cần tìm"
-          style={{
-            fontSize: 16,
+        <Searchbar
+          style={{borderRadius: 45, height: 35}}
+          inputStyle={{
+            fontSize: 12,
           }}
+          placeholder="Tìm kiếm việc làm, nhà tuyển dụng"
+          onChangeText={this._onChangeSearch}
+          value={searchQuery}
         />
-        <TouchableOpacity>
-          <Icon
-            name="closecircleo"
-            type="AntDesign"
-            style={{
-              fontSize: 16,
-            }}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            width: 60,
-          }}>
-          <Image
-            style={{
-              height: 25,
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              justifyContent: 'center',
-            }}
-            source={require('../../../assets/search.png')}
-          />
-        </TouchableOpacity>
-      </Item>
-    </CustomHeader>
-  );
-};
-
-export default SearchBar;
+      </View>
+    );
+  }
+}

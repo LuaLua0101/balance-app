@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, CardContent, CardImage} from 'react-native-cards';
+import {Card, CardContent, CardImage, CardTitle} from 'react-native-cards';
 import styled from 'styled-components';
 import {TouchableOpacity} from 'react-native';
 

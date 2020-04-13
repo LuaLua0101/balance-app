@@ -38,7 +38,7 @@ const TestCard = props => {
             </Body>
           </Left>
         </CardItem>
-        <CardItem bordered>
+        <CardItem>
           <Body>
             <Image
               source={{
@@ -54,7 +54,7 @@ const TestCard = props => {
             <Text>{props.short_description}...</Text>
           </Body>
         </CardItem>
-        <CardItem footer bordered>
+        <CardItem footer>
           <Left>
             <Button transparent>
               {props.type == 0 && (

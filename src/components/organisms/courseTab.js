@@ -5,7 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 
 const CustomSegment = styled(Segment)`
   min-width: 100%;
-  background-color: ${props => props.theme.subColor};
+  background-color: ${props => props.theme.mainColor};
   color: ${props => props.theme.lightColor};
 `;
 

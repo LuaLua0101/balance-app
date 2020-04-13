@@ -4,17 +4,44 @@ import {Logo, ButtonGreenCenter} from '../atoms';
 import {Icon, Content, Spinner, Card, CardItem} from 'native-base';
 import MainHeader from '../../../menu';
 import {UserInfoTab} from '../organisms';
-import {EditUserInfoForm} from '../templates';
+import {EditUserInfoForm, ViewUser} from '../templates';
 import axios from '../../utilities/axios';
 import * as cnt from '../../utilities/constants';
+
+import {BottomNavigation} from 'react-native-paper';
+
+const MusicRoute = () => <Text>Music</Text>;
+
+const AlbumsRoute = () => <Text>Albums</Text>;
+
+const RecentsRoute = () => <Text>Recents</Text>;
 
 const VIEW = 0;
 const EDIT = 1;
 const LOADING = 2;
 
+const dataTrash = {
+  name: 'Huấn hoa hồng',
+  address: 'địa chỉ',
+  avatar:
+    'https://static.yeah1.com/uploads/editors/27/2020/01/02/5Vfs1y97vU84EdTBjGKC9t6GOJYLfaxOKiu9qKwb.png',
+  avatarBackground:
+    'https://orig00.deviantart.net/dcd7/f/2014/027/2/0/mountain_background_by_pukahuna-d73zlo5.png',
+  tels: {id: 1, name: 'Mobile', number: '+66 (089)-928-2134'},
+  email: {id: 1, name: 'Personal', email: 'elsie-goodman@mail.com'},
+};
+
 const UserInfo = props => {
   const [order, setOrder] = useState(VIEW);
   const [data, setData] = useState();
+  const [nav, setNav] = useState({
+    index: 0,
+    routes: [
+      {key: 'music', title: 'Music', icon: 'queue-music'},
+      {key: 'albums', title: 'Albums', icon: 'album'},
+      {key: 'recents', title: 'Recents', icon: 'history'},
+    ],
+  });
 
   useEffect(() => {
     axios.get('getPersonalInfo').then(res => setData(res.data));
@@ -32,11 +59,34 @@ const UserInfo = props => {
     setOrder(EDIT);
   };
 
+  const _handleIndexChange = index => {
+    console.log(index);
+    setNav({
+      index: 1,
+      ...nav,
+    });
+  };
+
+  const _renderScene = ({route, jumpTo}) => {
+    console.log(nav);
+    switch (route.key) {
+      case 'music':
+        return <MusicRoute jumpTo={jumpTo} />;
+      case 'albums':
+        return <AlbumsRoute jumpTo={jumpTo} />;
+    }
+  };
+
   return (
     <MainHeader>
-      <UserInfoTab one />
-      {data && (
-        <Content padder>
+      {/* <UserInfoTab one /> */}
+      <BottomNavigation
+        navigationState={nav}
+        onIndexChange={_handleIndexChange}
+        renderScene={_renderScene}
+      />
+      {/* <Content padder>
+        {data && order === EDIT ? (
           <View style={styles.container}>
             <Logo
               source={require('../../../assets/logo.png')}
@@ -50,95 +100,31 @@ const UserInfo = props => {
               }}
             />
             <View style={styles.body}>
-              {data && order === EDIT ? (
-                <View style={{marginTop: 40}}>
-                  <EditUserInfoForm
-                    activeLoading={activeLoading}
-                    activeView={activeView}
-                    {...data}
-                    updateData={newData =>
-                      setData({
-                        ...data,
-                        name: newData.name,
-                        gender: newData.gender,
-                        address: newData.address,
-                        phone: newData.phone,
-                        email: newData.email,
-                      })
-                    }
-                  />
-                </View>
-              ) : data && order === VIEW ? (
-                <>
-                  <Card
-                    style={{
-                      marginTop: 30,
-                      width: '80%',
-                      marginLeft: 'auto',
-                      marginRight: 'auto',
-                    }}>
-                    <CardItem>
-                      <View style={styles.bodyContent}>
-                        <Text style={styles.name}>{data.name}</Text>
-                        <Text>
-                          <Icon
-                            type="AntDesign"
-                            name="user"
-                            style={styles.icon}
-                          />
-                          <Text style={styles.info}>
-                            {data.gender === 0 ? 'Nữ' : 'Nam'}
-                          </Text>
-                        </Text>
-                        <Text>
-                          <Icon
-                            type="AntDesign"
-                            name="user"
-                            style={styles.icon}
-                          />
-                          <Text style={styles.info}>Ngày sinh: {data.dob}</Text>
-                        </Text>
-                        <Text>
-                          <Icon
-                            type="AntDesign"
-                            name="home"
-                            style={styles.icon}
-                          />
-                          <Text style={styles.info}>
-                            Địa chỉ: {data.address}
-                          </Text>
-                        </Text>
-                        <Text>
-                          <Icon
-                            type="AntDesign"
-                            name="mail"
-                            style={styles.icon}
-                          />
-                          <Text style={styles.info}> Email: {data.email}</Text>
-                        </Text>
-                        <Text>
-                          <Icon
-                            type="AntDesign"
-                            name="phone"
-                            style={styles.icon}
-                          />
-                          <Text style={styles.info}> SĐT: {data.phone}</Text>
-                        </Text>
-                      </View>
-                    </CardItem>
-                  </Card>
-                  <ButtonGreenCenter
-                    text="Sửa thông tin cá nhân"
-                    onPress={activeEdit}
-                  />
-                </>
-              ) : (
-                <Spinner />
-              )}
+              <View style={{marginTop: 40}}>
+                <EditUserInfoForm
+                  activeLoading={activeLoading}
+                  activeView={activeView}
+                  {...data}
+                  updateData={newData =>
+                    setData({
+                      ...data,
+                      name: newData.name,
+                      gender: newData.gender,
+                      address: newData.address,
+                      phone: newData.phone,
+                      email: newData.email,
+                    })
+                  }
+                />
+              </View>
             </View>
           </View>
-        </Content>
-      )}
+        ) : data && order === VIEW ? (
+          <ViewUser {...dataTrash} />
+        ) : (
+          <Spinner />
+        )}
+      </Content> */}
     </MainHeader>
   );
 };

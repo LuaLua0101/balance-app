@@ -17,7 +17,7 @@ import {
   Button,
 } from 'native-base';
 import {useNavigation} from '@react-navigation/native';
-import {TouchableOpacity} from 'react-native';
+import {TouchableOpacity, Image} from 'react-native';
 
 const SideMenu = props => {
   const navigation = useNavigation();
@@ -61,7 +61,7 @@ const RightMenu = props => {
     <Right>
       <Button transparent onPress={() => navigation.navigate('Notify')}>
         <Icon name="md-notifications" style={{fontSize: 26}} />
-        <Badge style={{width: 12, height: 12}}></Badge>
+        <Badge style={{width: 12, height: 12}} />
       </Button>
       <Button transparent onPress={() => navigation.navigate('Bookmark')}>
         <Icon
@@ -82,7 +82,11 @@ const HeaderTitle = props => {
 
   return (
     <TouchableOpacity onPress={() => navigation.navigate('Main')}>
-      <Title>Balance App</Title>
+      <Image
+        source={require('./assets/2.png')}
+        style={{flex: 1, width: 40, height: 40, resizeMode: 'contain'}}
+      />
+      {/* <Title>Balance</Title> */}
     </TouchableOpacity>
   );
 };

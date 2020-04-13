@@ -1,4 +1,5 @@
 export const API_URL = 'http://139.180.195.15/api-komic/';
+// export const API_URL = 'http://localhost:8080/api-komic/';
 
 export const CHUDEKHOAHOC = 'get4CourseTopics';
 export const KYNANGMEMHOT = 'getHotestSkill';

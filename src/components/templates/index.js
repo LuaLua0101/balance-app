@@ -10,3 +10,4 @@ export {default as EditSkillForm} from './editSkillForm';
 export {default as SavedCompanies} from './savedCompanies';
 export {default as SavedCourses} from './savedCourses';
 export {default as SavedJobs} from './savedJobs';
+export {default as ViewUser} from './userInfo/viewUserInfo';

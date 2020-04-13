@@ -1,7 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import MainHeader from '../../../menu';
 import {Content} from 'native-base';
-import {MenuTab, SimpleBlock, SearchBar, JobCard} from '../organisms';
+import {
+  MenuTab,
+  SimpleBlock,
+  SearchBar,
+  JobCard,
+  PinnedJobCard,
+} from '../organisms';
 import * as cnt from '../../utilities/constants';
 import {useNavigation} from '@react-navigation/native';
 import axios from '../../utilities/axios';
@@ -31,6 +37,7 @@ const Job = props => {
       <MenuTab job />
       <SearchBar />
       <Content padder>
+        <PinnedJobCard data={data} />
         <JobCard {...data} />
         <SimpleBlock type={cnt.VIECHOT} more={toViewAll} page="jobs" />
         <SimpleBlock type={cnt.VIECMOI} more={toViewAll} page="jobs" />

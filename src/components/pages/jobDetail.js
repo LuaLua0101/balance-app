@@ -234,7 +234,7 @@ const JobDetail = props => {
                   }}>
                   <Col size={50}>
                     <Card>
-                      <CardItem bordered>
+                      <CardItem>
                         <Text>Quyền lợi</Text>
                       </CardItem>
                       <CardItem>
@@ -249,7 +249,7 @@ const JobDetail = props => {
                   </Col>
                   <Col size={50}>
                     <Card>
-                      <CardItem bordered>
+                      <CardItem>
                         <Text>Yêu cầu công việc</Text>
                       </CardItem>
                       <CardItem>

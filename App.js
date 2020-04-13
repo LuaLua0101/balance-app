@@ -7,6 +7,7 @@ import {Container} from 'native-base';
 import {GlobalStateProvider, dispatch} from './store';
 import DropdownAlert from 'react-native-dropdownalert';
 import firebase from 'react-native-firebase';
+import {Provider as PaperProvider} from 'react-native-paper';
 
 const createNotificationListener = () => {
   firebase.notifications().onNotification(notification => {
@@ -33,19 +34,21 @@ class App extends React.Component {
       <>
         <StatusBar hidden={true} />
         <GlobalStateProvider>
-          <ThemeProvider theme={theme}>
-            <Container>
-              <Routes />
-            </Container>
-          </ThemeProvider>
-          <DropdownAlert
-            ref={ref => {
-              dispatch({
-                type: 'init_configs',
-                config: {alert: ref},
-              });
-            }}
-          />
+          <PaperProvider>
+            <ThemeProvider theme={theme}>
+              <Container>
+                <Routes />
+              </Container>
+            </ThemeProvider>
+            <DropdownAlert
+              ref={ref => {
+                dispatch({
+                  type: 'init_configs',
+                  config: {alert: ref},
+                });
+              }}
+            />
+          </PaperProvider>
         </GlobalStateProvider>
       </>
     );
