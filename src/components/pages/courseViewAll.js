@@ -22,7 +22,7 @@ const CourseViewAll = props => {
     <MainHeader>
       <MenuTab course />
       <SearchBar />
-      <Content padder>
+      <Content>
         {data ? (
           data.map((item, index) => {
             return <CourseCard key={index} {...item} />;

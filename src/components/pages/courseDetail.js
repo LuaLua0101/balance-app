@@ -61,21 +61,25 @@ const CourseDetail = props => {
                 <View style={styles.header}>
                   <Text style={styles.headerTitle}>{data.title}</Text>
                 </View>
+
                 <View style={styles.postContent}>
                   <Text style={styles.postTitle}>Thông tin về khóa học</Text>
-
-                  <HTML
-                    html={data.description}
-                    imagesMaxWidth={Dimensions.get('window').width}
-                  />
-
+                  <ScrollView style={{flex: 1, height: 200}}>
+                    <HTML
+                      html={data.description}
+                      imagesMaxWidth={Dimensions.get('window').width}
+                    />
+                  </ScrollView>
                   <Text style={styles.tags}>{toCurrency(data.price)} vnđ</Text>
                   <Grid>
                     <Col size={15}>
                       <Rating startingValue={5} imageSize={25} readonly />
                     </Col>
                     <Col size={25}>
-                      <Text>{data.review_count} đánh giá</Text>
+                      <Text>
+                        {'  '}
+                        {data.review_count} lượt đánh giá
+                      </Text>
                     </Col>
                   </Grid>
                   {/* <Text style={styles.date}>2017-11-27 13:03:01</Text> */}
@@ -101,19 +105,19 @@ const CourseDetail = props => {
                 </View>
                 {/* <Syllabus style={{alignItems: 'center'}} /> */}
               </View>
-              <View style={styles.container}>
+              {/* <View style={styles.container}>
                 <View style={styles.header2}>
                   <Text style={styles.headerTitle}>Đánh giá khóa học</Text>
                 </View>
                 <CommentList />
-              </View>
+              </View> */}
             </ScrollView>
             <Footer style={{height: 40}}>
               <FooterTab>
                 <Button
                   style={{height: 40, backgroundColor: '#4dc4ff'}}
                   onPress={openModalRating}>
-                  <Text>Đánh giá</Text>
+                  <Text>Lưu lại</Text>
                 </Button>
                 <Button
                   style={{height: 40, backgroundColor: '#8bc94d'}}
@@ -122,7 +126,7 @@ const CourseDetail = props => {
                       console.error('An error occurred', err),
                     )
                   }>
-                  <Text>Đăng ký học</Text>
+                  <Text>Vào học ngay</Text>
                 </Button>
               </FooterTab>
             </Footer>

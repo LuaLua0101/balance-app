@@ -52,7 +52,7 @@ const SimpleBlock = props => {
       <CardItem header>
         <Grid>
           <Col size={75}>
-            <GreenText title>{data && data.title}</GreenText>
+            <Text>{data && data.title}</Text>
           </Col>
           <Col size={25}>
             <TouchableOpacity onPress={more}>
@@ -94,6 +94,14 @@ const SimpleBlock = props => {
                     });
                 };
 
+                const price = item.price
+                  ? parseInt(item.price)
+                  : item.salary_from
+                  ? parseInt(item.salary_from) +
+                    ' - ' +
+                    parseInt(item.salary_to)
+                  : null;
+
                 return props.page ? (
                   <Card2
                     routing={routing}
@@ -105,6 +113,7 @@ const SimpleBlock = props => {
                       '/' +
                       cover
                     }
+                    price={price}
                     text={item.title ? item.title : item.name ? item.name : ''}
                   />
                 ) : (

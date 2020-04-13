@@ -105,16 +105,8 @@ class Contact extends Component {
     }).isRequired,
   };
 
-  onPressPlace = () => {
-    console.log('place');
-  };
-
   onPressTel = number => {
     Linking.openURL(`tel://${number}`).catch(err => console.log('Error:', err));
-  };
-
-  onPressSms = () => {
-    console.log('sms');
   };
 
   onPressEmail = email => {
@@ -147,13 +139,13 @@ class Contact extends Component {
               }}
             />
             <Text style={styles.userNameText}>{name}</Text>
+            <Text style={styles.userCityText}>Nam, 23 tuổi</Text>
             <View style={styles.userAddressRow}>
               <View>
                 <Icon
                   name="place"
                   underlayColor="transparent"
                   iconStyle={styles.placeIcon}
-                  onPress={this.onPressPlace}
                 />
               </View>
               <View style={styles.userCityRow}>

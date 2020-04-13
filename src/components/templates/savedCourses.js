@@ -4,7 +4,7 @@ import {CourseCard} from '../organisms';
 
 const SavedCourses = props => {
   return (
-    <Content padder>
+    <Content>
       <CourseCard />
       <CourseCard />
       <CourseCard />

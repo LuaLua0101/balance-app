@@ -36,9 +36,8 @@ const Job = props => {
     <MainHeader>
       <MenuTab job />
       <SearchBar />
-      <Content padder>
+      <Content>
         <PinnedJobCard data={data} />
-        <JobCard {...data} />
         <SimpleBlock type={cnt.VIECHOT} more={toViewAll} page="jobs" />
         <SimpleBlock type={cnt.VIECMOI} more={toViewAll} page="jobs" />
         <SimpleBlock type={cnt.VIECQUANLYCANBAN} more={toViewAll} page="jobs" />

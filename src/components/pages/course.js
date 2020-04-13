@@ -24,7 +24,7 @@ const Course = props => {
     <MainHeader>
       <SearchBar />
       <CourseTab />
-      <Content padder>
+      <Content>
         <CustomCard>
           <CardItem>
             <Body

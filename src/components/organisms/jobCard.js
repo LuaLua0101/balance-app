@@ -1,21 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {
-  Card,
-  CardItem,
-  Thumbnail,
-  Text,
-  Button,
-  Icon,
-  Left,
-  Body,
-  Spinner,
-} from 'native-base';
+import {Thumbnail, Text, Button, Icon, Left, Body, Spinner} from 'native-base';
 import {Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
 import axios from '../../utilities/axios';
 import {toCurrency} from '../../utilities/regex';
 import * as cnt from '../../utilities/constants';
+import {Card, Title, Paragraph} from 'react-native-paper';
 
 const JobCard = props => {
   const navigation = useNavigation();
@@ -27,7 +18,29 @@ const JobCard = props => {
           id: props.id,
         })
       }>
-      <Card style={{flex: 0}}>
+      <Card>
+        <Card.Cover
+          source={{
+            uri: cnt.API_URL + 'public/admins/img/jobs' + '/' + props.cover,
+          }}
+        />
+        <Card.Content>
+          <Title>Card title</Title>
+          <Paragraph>{props.short_description}</Paragraph>
+          <Paragraph>
+            <Icon name="eye" type="AntDesign" style={{fontSize: 16}} />
+            {props.view_count}
+            {'  '}lượt xem {'     '}
+            <Icon name="checkcircle" type="AntDesign" style={{fontSize: 14}} />
+            {'  '}
+            {props.apply_count} ứng tuyển
+          </Paragraph>
+          <Paragraph style={{color: 'red'}}>
+            {toCurrency(props.salary_from)}-{toCurrency(props.salary_to)} VNĐ
+          </Paragraph>
+        </Card.Content>
+      </Card>
+      {/* <Card style={{flex: 0}}>
         <CardItem>
           <Left>
             <Thumbnail source={require('../../../assets/banlatrieuphu.jpg')} />
@@ -53,22 +66,15 @@ const JobCard = props => {
         </CardItem>
         <CardItem footer>
           <Left>
-            <Button transparent>
-              {/* <Icon type="MaterialIcons" name="attach-money" /> */}
-              {/* <Text>{props.province.name}</Text> */}
-            </Button>
+            <Button transparent />
           </Left>
           <Body>
             <Button transparent>
-              {/* <Icon active name="chatbubbles" /> */}
               <Text>{props.apply_count} ứng tuyển</Text>
             </Button>
           </Body>
-          {/* <Right>
-            <Text>11 giờ trước</Text>
-          </Right> */}
         </CardItem>
-      </Card>
+      </Card> */}
     </TouchableOpacity>
   ) : (
     <Spinner />

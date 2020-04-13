@@ -9,7 +9,7 @@ const Result = props => {
   return (
     <MainHeader>
       <UserInfoTab two />
-      <Content padder style={{backgroundColor: '#fff'}}>
+      <Content style={{backgroundColor: '#fff'}}>
         <View style={styles.container}>
           <Image
             style={styles.icon}

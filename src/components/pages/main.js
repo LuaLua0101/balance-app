@@ -23,7 +23,7 @@ const Main = props => {
   return (
     <MainHeader>
       <MenuTab main />
-      <Content padder>
+      <Content>
         <SimpleBlock type={cnt.KHOAHOCTUYETVOI} page="courses" />
         <SimpleBlock type={cnt.VIECGANBAN} page="jobs" />
         <SimpleBlock type={cnt.DNCANBAN} page="companies" />

@@ -1,20 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
-import {Logo, ButtonGreenCenter} from '../atoms';
-import {Icon, Content, Spinner, Card, CardItem} from 'native-base';
+import {StyleSheet, View, Image} from 'react-native';
+import {Logo} from '../atoms';
+import {Content, Spinner} from 'native-base';
 import MainHeader from '../../../menu';
-import {UserInfoTab} from '../organisms';
+import {UserInfoTab, MenuTab} from '../organisms';
 import {EditUserInfoForm, ViewUser} from '../templates';
 import axios from '../../utilities/axios';
 import * as cnt from '../../utilities/constants';
-
-import {BottomNavigation} from 'react-native-paper';
-
-const MusicRoute = () => <Text>Music</Text>;
-
-const AlbumsRoute = () => <Text>Albums</Text>;
-
-const RecentsRoute = () => <Text>Recents</Text>;
 
 const VIEW = 0;
 const EDIT = 1;
@@ -34,14 +26,6 @@ const dataTrash = {
 const UserInfo = props => {
   const [order, setOrder] = useState(VIEW);
   const [data, setData] = useState();
-  const [nav, setNav] = useState({
-    index: 0,
-    routes: [
-      {key: 'music', title: 'Music', icon: 'queue-music'},
-      {key: 'albums', title: 'Albums', icon: 'album'},
-      {key: 'recents', title: 'Recents', icon: 'history'},
-    ],
-  });
 
   useEffect(() => {
     axios.get('getPersonalInfo').then(res => setData(res.data));
@@ -59,33 +43,11 @@ const UserInfo = props => {
     setOrder(EDIT);
   };
 
-  const _handleIndexChange = index => {
-    console.log(index);
-    setNav({
-      index: 1,
-      ...nav,
-    });
-  };
-
-  const _renderScene = ({route, jumpTo}) => {
-    console.log(nav);
-    switch (route.key) {
-      case 'music':
-        return <MusicRoute jumpTo={jumpTo} />;
-      case 'albums':
-        return <AlbumsRoute jumpTo={jumpTo} />;
-    }
-  };
-
   return (
     <MainHeader>
-      {/* <UserInfoTab one /> */}
-      <BottomNavigation
-        navigationState={nav}
-        onIndexChange={_handleIndexChange}
-        renderScene={_renderScene}
-      />
-      {/* <Content padder>
+      <MenuTab />
+      <UserInfoTab one />
+      <Content>
         {data && order === EDIT ? (
           <View style={styles.container}>
             <Logo
@@ -124,7 +86,7 @@ const UserInfo = props => {
         ) : (
           <Spinner />
         )}
-      </Content> */}
+      </Content>
     </MainHeader>
   );
 };

@@ -16,7 +16,7 @@ const TestEbook = props => {
     <MainHeader>
       <MenuTab test />
       <SearchBar />
-      <Content padder>
+      <Content>
         <ScrollView style={{height: 200}} nestedScrollEnabled={true}>
           <PinnedTestCard />
           <PinnedTestCard />

@@ -4,7 +4,7 @@ import {JobCard} from '../organisms';
 
 const SavedJobs = props => {
   return (
-    <Content padder>
+    <Content>
       <JobCard />
       <JobCard />
       <JobCard />

@@ -24,7 +24,7 @@ const TestViewAll = props => {
     <MainHeader>
       <MenuTab test />
       <SearchBar />
-      <Content padder>
+      <Content>
         {data ? (
           data.map((item, index) => {
             return <TestCard key={index} {...item} />;

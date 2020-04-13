@@ -27,7 +27,7 @@ const MyCV = props => {
   return (
     <MainHeader>
       <UserInfoTab two />
-      <Content padder>
+      <Content>
         <CVList />
       </Content>
     </MainHeader>

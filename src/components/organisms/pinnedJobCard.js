@@ -17,7 +17,7 @@ const SimpleBlock = props => {
       <CardItem header style={{backgroundColor: '#4dc4ff'}}>
         <Grid>
           <Col size={75}>
-            <Text style={{fontSize: 20, color: '#fff'}}>Việc dành cho bạn</Text>
+            <Text style={{fontSize: 18, color: '#fff'}}>Việc dành cho bạn</Text>
           </Col>
           <Col size={25}>
             <TouchableOpacity>

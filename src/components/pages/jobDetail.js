@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View, Image, Dimensions} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Dimensions,
+  ScrollView,
+} from 'react-native';
 import {Logo} from '../atoms';
 import {
   Content,
@@ -43,7 +50,7 @@ const JobDetail = props => {
       <MenuTab job />
       {data && (
         <>
-          <Content padder>
+          <Content>
             <View style={styles.container}>
               <Logo
                 source={{
@@ -67,8 +74,8 @@ const JobDetail = props => {
               <View style={styles.body}>
                 <Card
                   style={{
-                    marginTop: 30,
                     width: '95%',
+                    marginTop: 10,
                     marginLeft: 'auto',
                     marginRight: 'auto',
                   }}>
@@ -77,20 +84,12 @@ const JobDetail = props => {
                       <Text style={styles.name}>
                         {data['company'] && data['company'].name}
                       </Text>
-                      {/* <ButtonShowMore text="Theo dõi" /> */}
-                    </View>
-                  </CardItem>
-                </Card>
-                <Card
-                  style={{
-                    width: '95%',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                  }}>
-                  <CardItem>
-                    <View style={styles.bodyContent}>
-                      <H3>{data.title}</H3>
-                      <Text>{data.apply_count} lượt ứng tuyển</Text>
+                      <Text style={{fontWeight: 'bold', fontSize: 16}}>
+                        {data.title}
+                      </Text>
+                      <Text style={{fontSize: 16}}>
+                        {data.apply_count} lượt ứng tuyển
+                      </Text>
                       <HTML
                         html={data.description}
                         imagesMaxWidth={Dimensions.get('window').width}
@@ -110,13 +109,74 @@ const JobDetail = props => {
                         <Left>
                           <Thumbnail
                             square
-                            source={require('../../../assets/bachelor.png')}
+                            source={require('../../../assets/thumbnailjob.jpg')}
                           />
                         </Left>
                         <Body>
-                          <Text>Mức lương</Text>
+                          <Text style={{fontWeight: 'bold', fontSize: 16}}>
+                            Mô tả công việc
+                          </Text>
+                          <HTML
+                            html={data.description}
+                            imagesMaxWidth={Dimensions.get('window').width}
+                          />
+                        </Body>
+                      </ListItem>
+                    </Content>
+                  </CardItem>
+                </Card>
+                <Card
+                  style={{
+                    width: '95%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  }}>
+                  <CardItem>
+                    <Content>
+                      <ListItem thumbnail>
+                        <Left>
+                          <Thumbnail
+                            square
+                            source={require('../../../assets/skill.png')}
+                          />
+                        </Left>
+                        <Body>
+                          <Text style={{fontWeight: 'bold', fontSize: 16}}>
+                            Kỹ năng chuyên môn yêu cầu
+                          </Text>
+                          <HTML
+                            html={data.requirements}
+                            imagesMaxWidth={Dimensions.get('window').width}
+                          />
+                        </Body>
+                      </ListItem>
+                    </Content>
+                  </CardItem>
+                </Card>
+                <Card
+                  style={{
+                    width: '95%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  }}>
+                  <CardItem>
+                    <Content>
+                      <ListItem thumbnail>
+                        <Left>
+                          <Thumbnail
+                            square
+                            source={require('../../../assets/salary.png')}
+                          />
+                        </Left>
+                        <Body>
+                          <Text style={{fontWeight: 'bold', fontSize: 16}}>
+                            Mức lương
+                          </Text>
                           <Text note numberOfLines={1}>
-                            {data.salary_from + ' - ' + data.salary_to}
+                            {parseInt(data.salary_from) +
+                              ' - ' +
+                              parseInt(data.salary_to)}{' '}
+                            VNĐ
                           </Text>
                         </Body>
                       </ListItem>
@@ -139,9 +199,11 @@ const JobDetail = props => {
                           />
                         </Left>
                         <Body>
-                          <Text>Yêu cầu bằng cấp</Text>
+                          <Text style={{fontWeight: 'bold', fontSize: 16}}>
+                            Yêu cầu bằng cấp
+                          </Text>
                           <Text note numberOfLines={1}>
-                            {data['degree'] && data['degree'].name}
+                            {data['degree'] ? data['degree'].name : 'không có'}
                           </Text>
                         </Body>
                       </ListItem>
@@ -160,11 +222,13 @@ const JobDetail = props => {
                         <Left>
                           <Thumbnail
                             square
-                            source={require('../../../assets/bachelor.png')}
+                            source={require('../../../assets/schedule.png')}
                           />
                         </Left>
                         <Body>
-                          <Text>Tính chất công việc</Text>
+                          <Text style={{fontWeight: 'bold', fontSize: 16}}>
+                            Tính chất công việc
+                          </Text>
                           <Text note numberOfLines={1}>
                             {data.job_type == 0
                               ? 'Toàn thời gian'
@@ -200,32 +264,7 @@ const JobDetail = props => {
                     </Content>
                   </CardItem>
                 </Card> */}
-                <Card
-                  style={{
-                    width: '95%',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                  }}>
-                  <CardItem>
-                    <Content>
-                      <ListItem thumbnail>
-                        <Left>
-                          <Thumbnail
-                            square
-                            source={require('../../../assets/bachelor.png')}
-                          />
-                        </Left>
-                        <Body>
-                          <Text>Kỹ năng chuyên môn yêu cầu</Text>
-                          <HTML
-                            html={data.requirements}
-                            imagesMaxWidth={Dimensions.get('window').width}
-                          />
-                        </Body>
-                      </ListItem>
-                    </Content>
-                  </CardItem>
-                </Card>
+
                 <Grid
                   style={{
                     width: '95%',
@@ -233,31 +272,43 @@ const JobDetail = props => {
                     marginRight: 'auto',
                   }}>
                   <Col size={50}>
-                    <Card>
+                    <Card style={{height: 250}} bordered>
                       <CardItem>
-                        <Text>Quyền lợi</Text>
+                        <Text style={{fontWeight: 'bold', fontSize: 16}}>
+                          Quyền lợi
+                        </Text>
                       </CardItem>
                       <CardItem>
                         <Body>
-                          <HTML
-                            html={data.benefits}
-                            imagesMaxWidth={Dimensions.get('window').width}
-                          />
+                          <ScrollView
+                            nestedScrollEnabled={true}
+                            style={{height: 250}}>
+                            <HTML
+                              html={data.benefits}
+                              imagesMaxWidth={Dimensions.get('window').width}
+                            />
+                          </ScrollView>
                         </Body>
                       </CardItem>
                     </Card>
                   </Col>
                   <Col size={50}>
-                    <Card>
+                    <Card style={{height: 250}} bordered>
                       <CardItem>
-                        <Text>Yêu cầu công việc</Text>
+                        <Text style={{fontWeight: 'bold', fontSize: 16}}>
+                          Yêu cầu công việc
+                        </Text>
                       </CardItem>
                       <CardItem>
                         <Body>
-                          <HTML
-                            html={data.requirements}
-                            imagesMaxWidth={Dimensions.get('window').width}
-                          />
+                          <ScrollView
+                            nestedScrollEnabled={true}
+                            style={{height: 250}}>
+                            <HTML
+                              html={data.requirements}
+                              imagesMaxWidth={Dimensions.get('window').width}
+                            />
+                          </ScrollView>
                         </Body>
                       </CardItem>
                     </Card>
@@ -275,11 +326,13 @@ const JobDetail = props => {
                         <Left>
                           <Thumbnail
                             square
-                            source={require('../../../assets/bachelor.png')}
+                            source={require('../../../assets/worker.png')}
                           />
                         </Left>
                         <Body>
-                          <Text>Hạn nộp hồ sơ</Text>
+                          <Text style={{fontWeight: 'bold', fontSize: 16}}>
+                            Hạn nộp hồ sơ
+                          </Text>
                           <Text note numberOfLines={3}>
                             Ngày {data.end_date}
                           </Text>
@@ -330,11 +383,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     marginTop: 130,
   },
-  name: {
-    fontSize: 22,
-    color: '#FFFFFF',
-    fontWeight: '600',
-  },
   body: {
     marginTop: 40,
   },
@@ -343,8 +391,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   name: {
-    fontSize: 28,
-    color: '#8b929b',
+    fontSize: 20,
+    color: '#4dc4ff',
     fontWeight: 'bold',
   },
   info: {

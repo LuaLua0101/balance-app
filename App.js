@@ -3,7 +3,6 @@ import {ThemeProvider} from 'styled-components';
 import theme from './theme';
 import Routes from './routes';
 import {StatusBar} from 'react-native';
-import {Container} from 'native-base';
 import {GlobalStateProvider, dispatch} from './store';
 import DropdownAlert from 'react-native-dropdownalert';
 import firebase from 'react-native-firebase';
@@ -36,9 +35,7 @@ class App extends React.Component {
         <GlobalStateProvider>
           <PaperProvider>
             <ThemeProvider theme={theme}>
-              <Container>
-                <Routes />
-              </Container>
+              <Routes />
             </ThemeProvider>
             <DropdownAlert
               ref={ref => {

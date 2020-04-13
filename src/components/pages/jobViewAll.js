@@ -23,8 +23,8 @@ const JobViewAll = props => {
     <MainHeader>
       <MenuTab job />
       <SearchBar />
-      <Content padder>
-        <Content padder>
+      <Content>
+        <Content>
           {data ? (
             data.map((item, index) => {
               return <JobCard key={index} {...item} />;

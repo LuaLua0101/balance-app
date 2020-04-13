@@ -62,39 +62,38 @@ const Notify = props => {
   return (
     <MainHeader>
       <MenuTab />
-      {/* <Content padder> */}
-        <View style={styles.container}>
-          <FlatList
-            style={styles.tasks}
-            columnWrapperStyle={styles.listContainer}
-            data={data}
-            keyExtractor={item => item.id.toString()
-            }
-            renderItem={({item}) => {
-              return (
-                <TouchableOpacity
-                  style={[styles.card, __getLineStyle(item)]}
-                  onPress={() => {
-                    clickEventListener(item);
-                  }}>
-                  <Image
-                    style={styles.image}
-                    source={{uri: __getCompletedIcon(item)}}
-                  />
-                  <View style={styles.cardContent}>
-                    <Text
-                      style={[styles.description, __getDescriptionStyle(item)]}>
-                      {item.description}
-                    </Text>
-                    <Text style={styles.date}>
-                      {moment(item.date, 'YYYY-MM-DD, h:mm:ss').fromNow()}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-              );
-            }}
-          />
-        </View>
+      {/* <Content> */}
+      <View style={styles.container}>
+        <FlatList
+          style={styles.tasks}
+          columnWrapperStyle={styles.listContainer}
+          data={data}
+          keyExtractor={item => item.id.toString()}
+          renderItem={({item}) => {
+            return (
+              <TouchableOpacity
+                style={[styles.card, __getLineStyle(item)]}
+                onPress={() => {
+                  clickEventListener(item);
+                }}>
+                <Image
+                  style={styles.image}
+                  source={{uri: __getCompletedIcon(item)}}
+                />
+                <View style={styles.cardContent}>
+                  <Text
+                    style={[styles.description, __getDescriptionStyle(item)]}>
+                    {item.description}
+                  </Text>
+                  <Text style={styles.date}>
+                    {moment(item.date, 'YYYY-MM-DD, h:mm:ss').fromNow()}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            );
+          }}
+        />
+      </View>
       {/* </Content> */}
     </MainHeader>
   );
