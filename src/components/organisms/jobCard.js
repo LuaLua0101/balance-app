@@ -1,9 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {Thumbnail, Text, Button, Icon, Left, Body, Spinner} from 'native-base';
-import {Image} from 'react-native';
+import React from 'react';
+import {Icon, Spinner} from 'native-base';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
-import axios from '../../utilities/axios';
 import {toCurrency} from '../../utilities/regex';
 import * as cnt from '../../utilities/constants';
 import {Card, Title, Paragraph} from 'react-native-paper';
@@ -25,7 +23,7 @@ const JobCard = props => {
           }}
         />
         <Card.Content>
-          <Title>Card title</Title>
+          <Title>{props.title}</Title>
           <Paragraph>{props.short_description}</Paragraph>
           <Paragraph>
             <Icon name="eye" type="AntDesign" style={{fontSize: 16}} />

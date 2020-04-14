@@ -19,6 +19,8 @@ import {useRoute} from '@react-navigation/native';
 import {toCurrency} from '../../utilities/regex';
 import HTML from 'react-native-render-html';
 import * as cnt from '../../utilities/constants';
+import HTMLView from 'react-native-htmlview';
+import {Tile} from 'react-native-elements';
 
 const CourseDetail = props => {
   const [modalRating, setModalRating] = useState(false);
@@ -35,7 +37,7 @@ const CourseDetail = props => {
         }
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [route.params.id]);
 
   const openModalRating = () => {
     setModalRating(true);
@@ -59,18 +61,19 @@ const CourseDetail = props => {
               />
               <View style={styles.container}>
                 <View style={styles.header}>
-                  <Text style={styles.headerTitle}>{data.title}</Text>
+                  <Tile
+                    imageSrc={{
+                      uri:
+                        cnt.API_URL + 'public/admins/img/courses/' + data.cover,
+                    }}
+                    title={data.title}
+                  />
                 </View>
-
                 <View style={styles.postContent}>
-                  <Text style={styles.postTitle}>Thông tin về khóa học</Text>
-                  <ScrollView style={{flex: 1, height: 200}}>
-                    <HTML
-                      html={data.description}
-                      imagesMaxWidth={Dimensions.get('window').width}
-                    />
-                  </ScrollView>
-                  <Text style={styles.tags}>{toCurrency(data.price)} vnđ</Text>
+                  <Text style={styles.tags}>
+                    {toCurrency(parseInt(data.price))} vnđ
+                  </Text>
+                  {data.description && <HTMLView value={data.description} />}
                   <Grid>
                     <Col size={15}>
                       <Rating startingValue={5} imageSize={25} readonly />
@@ -82,9 +85,8 @@ const CourseDetail = props => {
                       </Text>
                     </Col>
                   </Grid>
-                  {/* <Text style={styles.date}>2017-11-27 13:03:01</Text> */}
+                  <Text style={styles.date}>2017-11-27 13:03:01</Text>
                   <Text style={styles.date}>{data.buy_count} lượt mua</Text>
-
                   <View style={styles.profile}>
                     {data['author'] && (
                       <Image
@@ -146,7 +148,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   header: {
-    padding: 30,
     alignItems: 'center',
     backgroundColor: '#4dc4ff',
   },
@@ -168,15 +169,11 @@ const styles = StyleSheet.create({
   },
   postContent: {
     flex: 1,
-    padding: 30,
+    padding: 15,
   },
   postTitle: {
     fontSize: 26,
     fontWeight: '600',
-  },
-  postDescription: {
-    fontSize: 16,
-    marginTop: 10,
   },
   tags: {fontSize: 24, color: '#4dc4ff', marginTop: 10, fontWeight: 'bold'},
   date: {
