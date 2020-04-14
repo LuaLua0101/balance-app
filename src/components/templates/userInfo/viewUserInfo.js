@@ -10,8 +10,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import PropTypes from 'prop-types';
-import ListView from 'deprecated-react-native-listview';
+import * as cnt from '../../../utilities/constants';
 import Email from './Email';
 import Separator from './Separator';
 import Tel from './Tel';
@@ -78,9 +77,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   userImage: {
-    borderColor: mainColor,
-    borderRadius: 85,
-    borderWidth: 3,
     height: 170,
     marginBottom: 15,
     width: 170,
@@ -95,16 +91,6 @@ const styles = StyleSheet.create({
 });
 
 class Contact extends Component {
-  static propTypes = {
-    avatar: PropTypes.string.isRequired,
-    avatarBackground: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    address: PropTypes.shape({
-      city: PropTypes.string.isRequired,
-      country: PropTypes.string.isRequired,
-    }).isRequired,
-  };
-
   onPressTel = number => {
     Linking.openURL(`tel://${number}`).catch(err => console.log('Error:', err));
   };
@@ -118,7 +104,6 @@ class Contact extends Component {
   renderHeader = () => {
     const {
       avatar,
-      avatarBackground,
       name,
       address: {city, country},
     } = this.props;
@@ -129,13 +114,14 @@ class Contact extends Component {
           style={styles.headerBackgroundImage}
           blurRadius={10}
           source={{
-            uri: avatarBackground,
+            uri:
+              'https://orig00.deviantart.net/dcd7/f/2014/027/2/0/mountain_background_by_pukahuna-d73zlo5.png',
           }}>
           <View style={styles.headerColumn}>
             <Image
               style={styles.userImage}
               source={{
-                uri: avatar,
+                uri: cnt.API_URL + 'public/admins/img/users' + '/' + avatar,
               }}
             />
             <Text style={styles.userNameText}>{name}</Text>
@@ -160,19 +146,14 @@ class Contact extends Component {
 
   renderTel = () => (
     <Tel
-      name={this.props.tels.name}
-      number={this.props.tels.number}
+      number={this.props.phone}
       onPressSms={this.onPressSms}
       onPressTel={this.onPressTel}
     />
   );
 
   renderEmail = () => (
-    <Email
-      name={this.props.email.name}
-      email={this.props.email.email}
-      onPressEmail={this.onPressEmail}
-    />
+    <Email email={this.props.email} onPressEmail={this.onPressEmail} />
   );
 
   render() {

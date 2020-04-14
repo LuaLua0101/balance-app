@@ -22,7 +22,7 @@ import {TouchableOpacity} from 'react-native';
 
 const MyComponent = props => (
   <TouchableOpacity onPress={props.routing}>
-    <Card style={{width: 150, marginRight: 10}}>
+    <Card style={{width: 150, marginRight: 10, marginBottom: 1, height: 180}}>
       <Card.Cover
         source={{uri: props.uri}}
         style={{flex: 1, width: 150, height: 70, resizeMode: 'contain'}}
@@ -38,10 +38,18 @@ const MyComponent = props => (
           {props.text}
         </Paragraph>
         {props.price ? (
-          <Paragraph style={{color: 'red', marginLeft: -10, marginRight: -10}}>
-            {props.price + 'VNĐ'}
+          <Paragraph
+            style={{
+              color: 'red',
+              marginLeft: -10,
+              marginRight: -10,
+              fontSize: 12,
+            }}>
+            {props.price + ' VNĐ'}
           </Paragraph>
-        ) : null}
+        ) : (
+          <Paragraph />
+        )}
       </Card.Content>
     </Card>
   </TouchableOpacity>

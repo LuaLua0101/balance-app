@@ -4,7 +4,7 @@ import {Content} from 'native-base';
 import {MenuTab, SimpleBlock, SearchBar, PinnedTestCard} from '../organisms';
 import * as cnt from '../../utilities/constants';
 import {useNavigation} from '@react-navigation/native';
-import {ScrollView, TouchableOpacity} from 'react-native';
+import {ScrollView} from 'react-native';
 
 const TestEbook = props => {
   const navigation = useNavigation();
@@ -17,7 +17,7 @@ const TestEbook = props => {
       <MenuTab test />
       <SearchBar />
       <Content>
-        <ScrollView style={{height: 200}} nestedScrollEnabled={true}>
+        <ScrollView style={{height: 400}} nestedScrollEnabled={true}>
           <PinnedTestCard />
           <PinnedTestCard />
           <PinnedTestCard />

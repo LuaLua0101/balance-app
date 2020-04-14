@@ -34,7 +34,7 @@ const JobCard = props => {
             {props.apply_count} ứng tuyển
           </Paragraph>
           <Paragraph style={{color: 'red'}}>
-            {toCurrency(props.salary_from)}-{toCurrency(props.salary_to)} VNĐ
+            {toCurrency(props.salary_from)} - {toCurrency(props.salary_to)} VNĐ
           </Paragraph>
         </Card.Content>
       </Card>

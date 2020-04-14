@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Tel = ({containerStyle, index, name, email, onPressEmail}) => {
+const Tel = ({containerStyle, email, onPressEmail}) => {
   return (
     <TouchableOpacity onPress={() => onPressEmail(email)}>
       <View style={[styles.container, containerStyle]}>
@@ -69,9 +69,7 @@ const Tel = ({containerStyle, index, name, email, onPressEmail}) => {
             <Text style={styles.telNumberText}>{email}</Text>
           </View>
           <View style={styles.telNameColumn}>
-            {name.trim().length !== 0 && (
-              <Text style={styles.telNameText}>Email</Text>
-            )}
+            <Text style={styles.telNameText}>Email</Text>
           </View>
         </View>
       </View>

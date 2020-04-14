@@ -2,10 +2,11 @@ import React, {useState, useEffect} from 'react';
 import {Card, CardItem, Body, Spinner, Text} from 'native-base';
 import {ScrollView, TouchableOpacity} from 'react-native';
 import {Col, Grid} from 'react-native-easy-grid';
-import {Card as Card2, CardNoImage, GreenText, ButtonShowMore} from '../atoms';
+import {Card as Card2, CardNoImage} from '../atoms';
 import * as cnt from '../../utilities/constants';
 import axios from '../../utilities/axios';
 import {useNavigation} from '@react-navigation/native';
+import {toCurrency} from '../../utilities/regex';
 
 const SimpleBlock = props => {
   const navigation = useNavigation();
@@ -52,7 +53,7 @@ const SimpleBlock = props => {
       <CardItem header>
         <Grid>
           <Col size={75}>
-            <Text>{data && data.title}</Text>
+            <Text style={{fontWeight: 'bold'}}>{data && data.title}</Text>
           </Col>
           <Col size={25}>
             <TouchableOpacity onPress={more}>
@@ -113,7 +114,7 @@ const SimpleBlock = props => {
                       '/' +
                       cover
                     }
-                    price={price}
+                    price={price ? toCurrency(price) : null}
                     text={item.title ? item.title : item.name ? item.name : ''}
                   />
                 ) : (

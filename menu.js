@@ -18,6 +18,30 @@ import {
 } from 'native-base';
 import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity, Image} from 'react-native';
+import {ListItem} from 'react-native-elements';
+
+const list = [
+  {
+    name: 'Trang chủ',
+    route: 'Main',
+  },
+  {
+    name: 'Khóa học',
+    route: 'Course',
+  },
+  {
+    name: 'Việc làm',
+    route: 'Job',
+  },
+  {
+    name: 'Test & Ebook',
+    route: 'TestEbook',
+  },
+  {
+    name: 'Đăng xuất',
+    route: 'Login',
+  },
+];
 
 const SideMenu = props => {
   const navigation = useNavigation();
@@ -28,6 +52,18 @@ const SideMenu = props => {
         <Logo source={require('./assets/logo.png')} />
       </View>
       <View>
+        {list.map((l, i) => (
+          <ListItem
+            key={i}
+            title={l.name}
+            topDivider
+            bottomDivider
+            // titleStyle={{alignSelf: 'center'}}
+            onPress={() => navigation.navigate(l.route)}
+          />
+        ))}
+      </View>
+      {/* <View>
         <ButtonGreenCenter
           text="Trang chủ"
           onPress={() => navigation.navigate('Main')}
@@ -49,7 +85,7 @@ const SideMenu = props => {
           text="Đăng xuất"
           onPress={() => navigation.navigate('Login')}
         />
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -63,13 +99,13 @@ const RightMenu = props => {
         <Icon name="md-notifications" style={{fontSize: 26}} />
         <Badge style={{width: 12, height: 12}} />
       </Button>
-      <Button transparent onPress={() => navigation.navigate('Bookmark')}>
+      {/* <Button transparent onPress={() => navigation.navigate('Bookmark')}>
         <Icon
           type="MaterialCommunityIcons"
           name="bookmark-multiple"
           style={{fontSize: 26}}
         />
-      </Button>
+      </Button> */}
       <Button transparent onPress={() => navigation.navigate('UserInfo')}>
         <Icon name="ios-contact" style={{fontSize: 36}} />
       </Button>

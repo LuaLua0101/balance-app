@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Tel = ({containerStyle, index, name, number, onPressSms, onPressTel}) => {
+const Tel = ({containerStyle, number, onPressTel}) => {
   return (
     <TouchableOpacity onPress={() => onPressTel(number)}>
       <View style={[styles.container, containerStyle]}>
@@ -69,28 +69,12 @@ const Tel = ({containerStyle, index, name, number, onPressSms, onPressTel}) => {
             <Text style={styles.telNumberText}>{number}</Text>
           </View>
           <View style={styles.telNameColumn}>
-            {name.trim().length !== 0 && (
-              <Text style={styles.telNameText}>Số điện thoại</Text>
-            )}
+            <Text style={styles.telNameText}>Số điện thoại</Text>
           </View>
         </View>
       </View>
     </TouchableOpacity>
   );
-};
-
-Tel.propTypes = {
-  containerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
-  index: PropTypes.string.isRequired,
-  name: PropTypes.string,
-  number: PropTypes.string.isRequired,
-  onPressSms: PropTypes.func.isRequired,
-  onPressTel: PropTypes.func.isRequired,
-};
-
-Tel.defaultProps = {
-  containerStyle: {},
-  name: null,
 };
 
 export default Tel;

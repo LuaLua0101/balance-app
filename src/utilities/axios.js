@@ -10,10 +10,24 @@ axios.interceptors.request.use(async function(config) {
   return config;
 });
 
+// axios.interceptors.response.use(
+//   response => response,
+//   error => {
+//     return Promise.reject(error);
+//   },
+// );
+
 axios.interceptors.response.use(
-  response => response,
-  error => {
-    return Promise.reject(error);
+  response => {
+    return response;
+  },
+  function(error) {
+    // Do something with response error
+    if (error.response.status === 401) {
+      console.log('unauthorized, logging out ...');
+      AsyncStorage.clear();
+    }
+    return Promise.reject(error.response);
   },
 );
 

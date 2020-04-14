@@ -1,23 +1,11 @@
 import React from 'react';
 import MainHeader from '../../../menu';
-import {
-  Content,
-  Card,
-  CardItem,
-  Thumbnail,
-  Text,
-  Button,
-  Icon,
-  Left,
-  Body,
-  Right,
-} from 'native-base';
 import {Image} from 'react-native';
 import * as cnt from '../../utilities/constants';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
 import {toCurrency} from '../../utilities/regex';
-
+import {Avatar, Button, Card, Title, Paragraph} from 'react-native-paper';
 const CourseCard = props => {
   const navigation = useNavigation();
 
@@ -28,7 +16,18 @@ const CourseCard = props => {
           id: props.id,
         })
       }>
-      <Card style={{flex: 0}}>
+      <Card>
+        <Card.Content>
+          <Title>{props.title}</Title>
+          <Paragraph>{props.short_description}...</Paragraph>
+        </Card.Content>
+        <Card.Cover
+          source={{
+            uri: cnt.API_URL + 'public/admins/img/courses/' + props.cover,
+          }}
+        />
+      </Card>
+      {/* <Card style={{flex: 0}}>
         <CardItem>
           <Left>
             <Body>
@@ -62,7 +61,7 @@ const CourseCard = props => {
             </Button>
           </Body>
         </CardItem>
-      </Card>
+      </Card> */}
     </TouchableOpacity>
   );
 };
