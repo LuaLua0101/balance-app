@@ -48,9 +48,7 @@ const SideMenu = props => {
 
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
-      <View>
-        <Logo source={require('./assets/logo.png')} />
-      </View>
+      <Logo source={require('./assets/logo.png')} />
       <View>
         {list.map((l, i) => (
           <ListItem

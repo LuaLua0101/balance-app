@@ -53,11 +53,11 @@ const styles = StyleSheet.create({
   inputContainer: {
     borderBottomColor: '#F5FCFF',
     backgroundColor: '#FFFFFF',
-    borderRadius: 30,
+    borderRadius: 5,
     borderBottomWidth: 1,
     width: 300,
     height: 45,
-    marginBottom: 20,
+    marginBottom: 10,
     flexDirection: 'row',
     alignItems: 'center',
 

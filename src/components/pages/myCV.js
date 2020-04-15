@@ -27,7 +27,7 @@ const MyCV = props => {
   return (
     <MainHeader>
       <UserInfoTab two />
-      <Content>
+      <Content style={{height: 2700, backgroundColor: '#fff'}}>
         <CVList />
       </Content>
     </MainHeader>

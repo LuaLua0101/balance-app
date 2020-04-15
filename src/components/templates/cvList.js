@@ -160,19 +160,17 @@ const styles = StyleSheet.create({
   },
 
   card: {
-    shadowColor: '#00000021',
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.37,
-    shadowRadius: 7.49,
-    elevation: 10,
-    margin: 10,
+    // shadowColor: '#00000021',
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 6,
+    // },
+    // shadowOpacity: 0.37,
+    // shadowRadius: 7.49,
+    // elevation: 10,
     backgroundColor: 'white',
     padding: 10,
     flexDirection: 'row',
-    borderRadius: 15,
   },
 
   name: {

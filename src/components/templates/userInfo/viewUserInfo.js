@@ -14,8 +14,8 @@ import * as cnt from '../../../utilities/constants';
 import Email from './Email';
 import Separator from './Separator';
 import Tel from './Tel';
-
-const mainColor = '#01C89E';
+import Address from './Address';
+import {Footer, FooterTab, Button, Spinner} from 'native-base';
 
 const styles = StyleSheet.create({
   cardContainer: {
@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     paddingTop: 35,
   },
-  headerContainer: {},
   headerColumn: {
     backgroundColor: 'transparent',
     ...Platform.select({
@@ -104,6 +103,7 @@ class Contact extends Component {
   renderHeader = () => {
     const {
       avatar,
+      gender,
       name,
       address: {city, country},
     } = this.props;
@@ -125,8 +125,10 @@ class Contact extends Component {
               }}
             />
             <Text style={styles.userNameText}>{name}</Text>
-            <Text style={styles.userCityText}>Nam, 23 tuổi</Text>
-            <View style={styles.userAddressRow}>
+            <Text style={styles.userCityText}>
+              {gender == 0 ? 'Nữ' : 'Nam'}
+            </Text>
+            {/* <View style={styles.userAddressRow}>
               <View>
                 <Icon
                   name="place"
@@ -137,7 +139,7 @@ class Contact extends Component {
               <View style={styles.userCityRow}>
                 <Text style={styles.userCityText}>{this.props.address}</Text>
               </View>
-            </View>
+            </View> */}
           </View>
         </ImageBackground>
       </View>
@@ -152,22 +154,39 @@ class Contact extends Component {
     />
   );
 
+  renderAddress = () => <Address address={this.props.address} />;
+
   renderEmail = () => (
     <Email email={this.props.email} onPressEmail={this.onPressEmail} />
   );
 
   render() {
     return (
-      <ScrollView style={styles.scroll}>
-        <View style={styles.container}>
-          <Card containerStyle={styles.cardContainer}>
-            {this.renderHeader()}
-            {this.renderTel()}
-            {Separator()}
-            {this.renderEmail()}
-          </Card>
-        </View>
-      </ScrollView>
+      <>
+        <ScrollView style={styles.scroll}>
+          <View style={styles.container}>
+            <Card containerStyle={styles.cardContainer}>
+              {this.renderHeader()}
+              {this.renderTel()}
+              {Separator()}
+              {this.renderEmail()}
+              {this.renderAddress()}
+            </Card>
+          </View>
+        </ScrollView>
+        <Footer style={{height: 40}}>
+          <FooterTab>
+            <Button style={{height: 40, backgroundColor: '#4dc4ff'}}>
+              <Text>Đổi mật khẩu</Text>
+            </Button>
+            <Button
+              style={{height: 40, backgroundColor: '#8bc94d'}}
+              onPress={this.props.edit}>
+              <Text>Đổi thông tin cá nhân</Text>
+            </Button>
+          </FooterTab>
+        </Footer>
+      </>
     );
   }
 }

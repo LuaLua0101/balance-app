@@ -53,17 +53,9 @@ const EitUserInfoForm = props => {
         style={{
           width: 300,
           backgroundColor: '#FFFFFF',
-          borderRadius: 30,
+          borderRadius: 5,
           height: 45,
-          marginBottom: 20,
-          shadowColor: '#808080',
-          shadowOffset: {
-            width: 0,
-            height: 2,
-          },
-          shadowOpacity: 0.25,
-          shadowRadius: 3.84,
-          elevation: 5,
+          marginBottom: 10,
         }}>
         <Picker
           mode="dropdown"
@@ -92,18 +84,5 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-  },
-  btnForgotPassword: {
-    height: 15,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-    marginBottom: 10,
-    width: 300,
-    backgroundColor: 'transparent',
-  },
-  btnText: {
-    color: '#8b929b',
   },
 });

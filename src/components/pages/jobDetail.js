@@ -264,15 +264,42 @@ const JobDetail = props => {
                     </Content>
                   </CardItem>
                 </Card> */}
-
-                <Grid
+                <Card
                   style={{
                     width: '95%',
                     marginLeft: 'auto',
                     marginRight: 'auto',
                   }}>
+                  <CardItem>
+                    <Content>
+                      <ListItem thumbnail>
+                        <Left>
+                          <Thumbnail
+                            square
+                            source={require('../../../assets/worker.png')}
+                          />
+                        </Left>
+                        <Body>
+                          <Text style={{fontWeight: 'bold', fontSize: 16}}>
+                            Hạn nộp hồ sơ
+                          </Text>
+                          <Text note numberOfLines={3}>
+                            Ngày {data.end_date}
+                          </Text>
+                        </Body>
+                      </ListItem>
+                    </Content>
+                  </CardItem>
+                </Card>
+                <Grid
+                  style={{
+                    width: '95%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                    marginBottom: 10,
+                  }}>
                   <Col size={50}>
-                    <Card style={{height: 250}} bordered>
+                    <Card style={{height: 300}} bordered>
                       <CardItem>
                         <Text style={{fontWeight: 'bold', fontSize: 16}}>
                           Quyền lợi
@@ -314,33 +341,6 @@ const JobDetail = props => {
                     </Card>
                   </Col>
                 </Grid>
-                <Card
-                  style={{
-                    width: '95%',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                  }}>
-                  <CardItem>
-                    <Content>
-                      <ListItem thumbnail>
-                        <Left>
-                          <Thumbnail
-                            square
-                            source={require('../../../assets/worker.png')}
-                          />
-                        </Left>
-                        <Body>
-                          <Text style={{fontWeight: 'bold', fontSize: 16}}>
-                            Hạn nộp hồ sơ
-                          </Text>
-                          <Text note numberOfLines={3}>
-                            Ngày {data.end_date}
-                          </Text>
-                        </Body>
-                      </ListItem>
-                    </Content>
-                  </CardItem>
-                </Card>
               </View>
             </View>
           </Content>
